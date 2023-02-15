@@ -1,0 +1,31 @@
+html{
+    font-family: 'lato', serif;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 0px 0px;
+    grid-template-areas: 
+    ". div1 ."
+    ". div2 ."
+    ". . ."
+    ". . ."
+    ". . .";
+}
+.div1 {
+    grid-area: div1;
+}
+.div2{
+    grid-area: div2;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+#member-form div{
+    padding: 0px 0px 20px;
+}
+.error{
+    color: red;
+}
