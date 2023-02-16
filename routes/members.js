@@ -7,7 +7,7 @@ router.use(express.static('src'));
 
 router.get('/add-member/', function(req, res) {
     res.render("index");
-  });
+});
 
 router.post('/add-member/submit-form/', (req, res) => {
   formData = req.body;
