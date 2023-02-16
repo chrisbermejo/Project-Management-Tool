@@ -1,14 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const memberRoute = require('./routes/members');
 const PORT = 3000;
 
 const app = express();
 
-mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://127.0.0.1:27017/')
-.then(() => console.log('Connected to DB')).catch((err) => console.log(err));
+require('./database');
 
 app.use(express.static('src'));
 app.use('/css', express.static(__dirname + '/src/index-style'));
