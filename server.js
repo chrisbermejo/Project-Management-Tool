@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const memberRoute = require('./routes/members');
+const loginRoute = require('./routes/login');
 const PORT = 3000;
 
 const app = express();
@@ -17,9 +18,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/dashboard/members', memberRoute);
+app.use('/login/', loginRoute);
 
 app.get('/', function(req, res) {
-  res.redirect('/dashboard/members/add-member/')
+  res.redirect('/login/')
 });
 
 app.listen(PORT, () => {

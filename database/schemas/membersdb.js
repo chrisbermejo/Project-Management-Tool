@@ -33,6 +33,10 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.Date,
         required: true,
         default: new Date(),
+    },
+    password: {
+        type: mongoose.SchemaTypes.Number,
+        required: true
     }
 });
 

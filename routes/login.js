@@ -5,11 +5,7 @@ const member = require('../database/schemas/membersdb');
 router.use(express.static('src'));
 
 router.get('/', (req, res) => {
-  res.render("main-member");
-});
-
-router.get('/add-member/', function(req, res) {
-  res.render("index");
+    res.render("login");
 });
 
 router.post('/add-member/submit-form/', async (req, res) => {
