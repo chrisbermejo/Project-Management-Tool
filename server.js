@@ -7,10 +7,7 @@ const PORT = 3000;
 const app = express();
 
 require('./database');
-
 app.use(express.static('src'));
-app.use('/css', express.static(__dirname + '/src/index-style'));
-app.use('/js', express.static(__dirname + '/src/index'));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
