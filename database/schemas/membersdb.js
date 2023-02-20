@@ -1,4 +1,7 @@
+const crypto = require('crypto');
 const mongoose = require('mongoose');
+
+const options = { month: '2-digit', day: '2-digit', year: 'numeric' };
 
 const UserSchema = new mongoose.Schema({
     memberid: {
@@ -33,6 +36,19 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.Date,
         required: true,
         default: new Date(),
+    },
+    password: {
+        type: mongoose.SchemaTypes.String,
+        required: true,
+        default: function(){
+            const length = 10;
+            const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-={}[]|\\:;"<>,.?/';
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                password += charset[crypto.randomInt(charset.length)];
+            }
+            return password;
+        }
     }
 });
 

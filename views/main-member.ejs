@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Members</title>
+</head>
+<body>
+    <div class="main-member-container">
+        <div class="main-member-nav-container">
+            <div class="main-member-nav">
+                <a id="first-button" href="/dashboard/">Dashboard</a>
+                <a id="active" href="/dashboard/members/">Members</a>
+                <a href="/dashboard/project/">Project</a>
+                <a href="/dashboard/task/">Task</a>
+                <div class="left-button-container">
+                    <a id="last-button" href="/login/">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="main-member-div1">
+            <div class="main-member-header-container">
+                <div class="main-member-header">
+                    <h1>Members</h1>
+                    <button id="openAddMemberButton" class="circle-container material-symbols-outlined" type="button">
+                        person_add
+                    </button>
+                </div>
+            </div>
+            <div class="main-member-table-container">
+                <div class="table-grid-container">
+                    <div class="header">ID</div>
+                    <div class="header">First Name</div>
+                    <div class="header">Last Name</div>
+                    <div class="header header-res">Email</div>
+                    <div class="header header-res">Role</div>
+                    <div class="header header-res">IsActive</div>
+                    <div class="header header-res">Team ID</div>
+                    <div class="header header-res">Date Created</div>
+                    <div class="header"> </div>
+                    <% members.forEach(member => { %>
+                        <div class="cell cell-text"><%= member.memberid %></div>
+                        <div class="cell cell-text"><%= member.fname %></div>
+                        <div class="cell cell-text"><%= member.lname %></div>
+                        <div class="cell cell-res cell-text"><%= member.email %></div>
+                        <div class="cell cell-res cell-text"><%= member.role %></div>
+                        <div class="cell cell-res cell-text"><%= member.isActive %></div>
+                        <div class="cell cell-res cell-text"><%= member.teamid %></div>
+                        <div class="cell cell-res cell-text"><%= member.createdAt.toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: 'numeric'}) %></div>
+                        <div class="cell button-container button-cell">
+                            <button class="editMemberForm" value="<%=member.memberid %>">Edit</button>
+                            <button class="deleteMemberForm" value="<%=member.memberid %>">Delete</button>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+
+            <dialog id="addMemberForm">
+                <section>
+                    <div class="middle">
+                        <form onsubmit="validateForm(event)" action="/dashboard/members/submit-form" method="POST" id="member-form">
+                            <label for="memberid" id="memberid-error">Member ID:</label>
+                            <input type="number" name="memberid" id="memberid" min="1">
+            
+                            <label for="fname" id="fname-error">First Name:   </label>
+                            <input type="text" name="fname" id="fname">
+            
+                            <label for="lname" id="lname-error">Last Name:   </label>
+                            <input type="text" name="lname" id="lname">
+            
+                            <label for="email" id="email-error">Email:   </label>
+                            <input type="email" name="email" id="email">
+            
+                            <label for="role" id="role-error">Role:</label>
+                            <select name="role" id="role">
+                                <option value="">-- Select Role --</option>
+                                <option value="admin">Admin</option>
+                                <option value="member">Member</option>
+                                <option value="guest">Guest</option>
+                            </select>
+            
+                            <label for="isActive" id="isActive-error">Is Active:</label>
+                            <select name="isActive" id="isActive">
+                                <option value="">-- Select Active Status --</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+            
+                            <label for="teamid" id="teamid-error">Team ID:</label>
+                            <input type="number" name="teamid" id="teamid" min="1">
+                            
+                            <div class="button-container">
+                                <button class="closeAddMember" type="submit">CREATE</button>
+                                <button class="closeAddMember" type="button">CANCEL</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </section>
+            </dialog>
+
+        </div>
+    </div>
+
+</body>
+
+<script src="/js/script.js"></script>
+
+</html>

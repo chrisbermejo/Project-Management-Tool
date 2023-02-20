@@ -1,80 +1,139 @@
+
+
+
+
+//Add Member Dialog
+let openDialogButton = document.getElementById('openAddMemberButton');
+let demoDialog = document.getElementById('addMemberForm');
+let closeDialog = document.querySelectorAll('.closeAddMember');
+
+//form
+let memberform = document.getElementById('member-form');
+
+let memberid = document.getElementById("memberid");
+let memberidError = document.getElementById("memberid-error");
+
+let fname = document.getElementById("fname");
+let fnameError = document.getElementById("fname-error");
+
+let lname = document.getElementById("lname");
+let lnameError = document.getElementById("lname-error");
+
+let email = document.getElementById("email");
+let emailError = document.getElementById("email-error");
+
+let role = document.getElementById("role");
+let roleError = document.getElementById("role-error");
+
+let isActive = document.getElementById("isActive");
+let isActiveError = document.getElementById("isActive-error");
+
+let teamid = document.getElementById("teamid");
+let teamidError = document.getElementById("teamid-error");
+
 // validating the information inside the form. 
 function validateForm(event) {
     event.preventDefault();
-
-    let memberid = document.getElementById("memberid");
-    let memberidError = document.getElementById("memberid-error");
-
-    let fname = document.getElementById("fname");
-    let fnameError = document.getElementById("fname-error");
-
-    let lname = document.getElementById("lname");
-    let lnameError = document.getElementById("lname-error");
-
-    let email = document.getElementById("email");
-    let emailError = document.getElementById("email-error");
-
-    let role = document.getElementById("role");
-    let roleError = document.getElementById("role-error");
-
-    let isActive = document.getElementById("isActive");
-    let isActiveError = document.getElementById("isActive-error");
-
-    let teamid = document.getElementById("teamid");
-    let teamidError = document.getElementById("teamid-error");
-
     let isValid = true;
 
     if (memberid.value === "" || isNaN(memberid.value) || parseInt(memberid.value) < 1) {
-      memberidError.innerHTML = "Please enter a valid member ID (must be a number greater than 0)";
+      memberidError.classList.add('label-error');
+      memberid.classList.add('input-error');
       isValid = false;
     } else {
-      memberidError.innerHTML = "";
+      memberidError.classList.remove('label-error');
+      memberid.classList.remove('input-error');
     }
 
     if (fname.value === "" || !/^[a-zA-Z ]+$/.test(fname.value)) {
-      fnameError.innerHTML = "Please enter a valid firstaaaaaa name (letters and spaces only)";
+      fnameError.classList.add('label-error');
+      fname.classList.add('input-error');
       isValid = false;
     } else {
-      fnameError.innerHTML = "";
+      fnameError.classList.remove('label-error');
+      fname.classList.remove('input-error');
     }
 
     if (lname.value === "" || !/^[a-zA-Z ]+$/.test(lname.value)) {
-      lnameError.innerHTML = "Please enter a valid last name (letters and spaces only)";
+      lnameError.classList.add('label-error');
+      lname.classList.add('input-error');
       isValid = false;
     } else {
-      lnameError.innerHTML = "";
+      lnameError.classList.remove('label-error');
+      lname.classList.remove('input-error');
     }
 
     if (email.value === "" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-      emailError.innerHTML = "Please enter a valid email address";
+      emailError.classList.add('label-error');
+      email.classList.add('input-error');
       isValid = false;
     } else {
-      emailError.innerHTML = "";
+      emailError.classList.remove('label-error');
+      email.classList.remove('input-error');
     }
 
     if (role.value === "") {
-      roleError.innerHTML = "Please select a role";
+      roleError.classList.add('label-error');
+      role.classList.add('input-error');
       isValid = false;
     } else {
-      roleError.innerHTML = "";
+      roleError.classList.remove('label-error');
+      role.classList.remove('input-error');
     }
 
     if (isActive.value === "") {
-      isActiveError.innerHTML = "Please select an active status";
+      isActiveError.classList.add('label-error');
+      isActive.classList.add('input-error');
       isValid = false;
     } else {
-      isActiveError.innerHTML = "";
+      isActiveError.classList.remove('label-error');
+      isActive.classList.remove('input-error');
     }
 
     if (teamid.value === "" || isNaN(teamid.value) || parseInt(teamid.value) < 1) {
-      teamidError.innerHTML = "Please enter a valid team ID (must be a number greater than 0)";
+      teamidError.classList.add('label-error');
+      teamid.classList.add('input-error');
       isValid = false;
     } else {
-      teamidError.innerHTML = "";
+      teamidError.classList.remove('label-error');
+      teamid.classList.remove('input-error');
     }
 
     if (isValid) {
+      closeDialog[0].addEventListener('click', function() {
+        demoDialog.close();
+      });      
       event.target.submit();
     }
 }
+
+function removeClasses(){
+  teamidError.classList.remove('label-error');
+  teamid.classList.remove('input-error');
+  isActiveError.classList.remove('label-error');
+  isActive.classList.remove('input-error');
+  roleError.classList.remove('label-error');
+  role.classList.remove('input-error');
+  emailError.classList.remove('label-error');
+  email.classList.remove('input-error');
+  lnameError.classList.remove('label-error');
+  lname.classList.remove('input-error');
+  fnameError.classList.remove('label-error');
+  fname.classList.remove('input-error');
+  memberidError.classList.remove('label-error');
+  memberid.classList.remove('input-error');
+}
+
+openDialogButton.addEventListener('click', function () {
+  if (typeof demoDialog.showModal === "function") {
+    demoDialog.showModal();
+  } else {
+    console.log("The <dialog> API is not supported by this browser");
+  }
+});
+
+closeDialog[1].addEventListener('click', function() {
+  demoDialog.close();
+  memberform.reset()
+  removeClasses();
+});
