@@ -1,14 +1,10 @@
-
-
-
-
 //Add Member Dialog
-let openDialogButton = document.getElementById('openAddMemberButton');
-let demoDialog = document.getElementById('addMemberForm');
-let closeDialog = document.querySelectorAll('.closeAddMember');
+let openAddMemberDialogButton = document.getElementById('openAddMemberButton');
+let AddMemberDialog = document.getElementById('addMemberForm');
+let closeAddMemberDialog = document.querySelectorAll('.closeAddMember');
 
-//form
-let memberform = document.getElementById('member-form');
+//add-form
+let memberform = document.getElementById('add-member-form');
 
 let memberid = document.getElementById("memberid");
 let memberidError = document.getElementById("memberid-error");
@@ -124,16 +120,61 @@ function removeClasses(){
   memberid.classList.remove('input-error');
 }
 
-openDialogButton.addEventListener('click', function () {
-  if (typeof demoDialog.showModal === "function") {
-    demoDialog.showModal();
+openAddMemberDialogButton.addEventListener('click', function () {
+  if (typeof AddMemberDialog.showModal === "function") {
+    AddMemberDialog.showModal();
   } else {
     console.log("The <dialog> API is not supported by this browser");
   }
 });
 
-closeDialog[1].addEventListener('click', function() {
-  demoDialog.close();
+closeAddMemberDialog[1].addEventListener('click', function() {
+  AddMemberDialog.close();
   memberform.reset()
   removeClasses();
+});
+
+
+//edit-form
+let edit_memberid = document.getElementById("edit-memberid");
+let edit_fname = document.getElementById("edit-fname");
+let edit_lname = document.getElementById("edit-lname");
+let edit_email = document.getElementById("edit-email");
+let edit_role = document.getElementById("edit-role");
+let edit_isActive = document.getElementById("edit-isActive");
+let edit_teamid = document.getElementById("edit-teamid");
+
+//Edit Member Dialog
+let openEditMemberDialogButton = document.querySelectorAll('.openEditMemberButton');
+let EditMemberDialog = document.getElementById('editMemberForm');
+let closeEditMemberDialog = document.querySelectorAll('.closeEditMember');
+
+closeEditMemberDialog[1].addEventListener('click', function() {
+  EditMemberDialog.close();
+  removeClasses();
+});
+
+openEditMemberDialogButton.forEach(editButton => {
+  editButton.addEventListener('click', async (event) => {
+    const memberId = event.target.value;
+
+    try {
+      const response = await fetch(`/dashboard/members/api/${memberId}/edit`);
+      const member = await response.json();
+      console.log(member);
+      edit_memberid.value = member.memberid;
+      edit_fname.value = member.fname;
+      edit_lname.value = member.lname;
+      edit_email.value = member.email;
+      edit_role.value = member.role;
+      edit_isActive.value = member.isActive;
+      edit_teamid.value = member.teamid;
+
+      EditMemberDialog.showModal();
+
+
+    } catch (err) {
+      console.error(err);
+    }
+  });
 });

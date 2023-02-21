@@ -15,6 +15,17 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/api/:memberId/edit', async (req, res) => {
+  try {
+    const memberId = req.params.memberId;
+    const memberINFO = await member.findOne({memberid: memberId});
+    console.log(memberINFO);
+    res.json(memberINFO);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
 
 router.post('/submit-form', async (req, res) => {
   const { memberid, fname, lname, email, role, isActive, teamid } = req.body;
