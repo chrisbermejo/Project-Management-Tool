@@ -34,7 +34,7 @@ input[type='text'],input[type='email'],input[type='number'], input[type='passwor
     padding: 6px;
 }
 
-#member-form label{
+#add-member-form label, #edit-member-form label{
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: left;

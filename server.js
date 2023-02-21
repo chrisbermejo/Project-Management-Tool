@@ -7,6 +7,7 @@ const PORT = 3000;
 const app = express();
 
 require('./database');
+
 app.use(express.static('src'));
 
 app.set('views', './views');
