@@ -180,6 +180,7 @@ h1{
 }
 
 .button-cell button{
+    font-size: 14px;
     width: auto;
     padding: 2px 10px 2px 10px;
     vertical-align: middle;
