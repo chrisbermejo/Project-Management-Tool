@@ -1,6 +1,5 @@
 // validating the information inside the form. 
-function validateForm(event) {
-  event.preventDefault();
+function validation() {
   let isValid = true;
 
   if (memberid.value === "" || isNaN(memberid.value) || parseInt(memberid.value) < 1) {
@@ -66,12 +65,7 @@ function validateForm(event) {
     teamid.classList.remove('input-error');
   }
 
-  if (isValid) {
-    closeAddMemberAddMemberDialog[0].addEventListener('click', function() {
-      demoDialog.close();
-    });      
-    event.target.submit();
-  }
+  return isValid;
 }
 
 
@@ -130,6 +124,18 @@ openAddMemberDialogButton.addEventListener('click', function () {
   }
 });
 
+function validateForm(event) {
+  event.preventDefault();
+  let isValid = validation();
+
+  if (isValid) {
+    closeAddMemberDialog[0].addEventListener('click', function() {
+      demoDialog.close();
+    });      
+    event.target.submit();
+  }
+}
+
 closeAddMemberDialog[1].addEventListener('click', function() {
   AddMemberDialog.close();
   memberform.reset()
@@ -160,12 +166,12 @@ closeEditMemberDialog[1].addEventListener('click', function() {
 
 openEditMemberDialogButton.forEach(editButton => {
   editButton.addEventListener('click', async (event) => {
-    const memberId = event.target.value;
+    const memberId = event.target.dataset.memberId;
 
     try {
-      const response = await fetch(`/dashboard/members/api/${memberId}/edit`);
+      const response = await fetch(`/dashboard/members/api/${memberId}`);
       const member = await response.json();
-      console.log(member);
+      console.log(member._id);
       edit_memberid.value = member.memberid;
       edit_fname.value = member.fname;
       edit_lname.value = member.lname;
