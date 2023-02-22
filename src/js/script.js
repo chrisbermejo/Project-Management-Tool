@@ -67,7 +67,7 @@ function validateForm(event) {
   }
 
   if (isValid) {
-    closeAddMemberDialog[0].addEventListener('click', function() {
+    closeAddMemberAddMemberDialog[0].addEventListener('click', function() {
       demoDialog.close();
     });      
     event.target.submit();
