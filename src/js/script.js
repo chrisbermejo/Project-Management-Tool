@@ -166,7 +166,7 @@ closeEditMemberDialog[1].addEventListener('click', function() {
 
 openEditMemberDialogButton.forEach(editButton => {
   editButton.addEventListener('click', async (event) => {
-    const memberId = event.target.dataset.memberId;
+    const memberId = event.target.value;
 
     try {
       const response = await fetch(`/dashboard/members/api/${memberId}`);
