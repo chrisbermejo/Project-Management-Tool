@@ -44,7 +44,7 @@
                     <div class="header header-res">Role</div>
                     <div class="header header-res">IsActive</div>
                     <div class="header header-res">Team ID</div>
-                    <div class="header header-res">Date Created</div>
+                    <!-- <div class="header header-res">Date Created</div> -->
                     <div class="header"> </div>
                     <% members.forEach(member => { %>
                         <div class="cell cell-text"><%= member.memberid %></div>
@@ -54,11 +54,12 @@
                         <div class="cell cell-res cell-text"><%= member.role %></div>
                         <div class="cell cell-res cell-text"><%= member.isActive %></div>
                         <div class="cell cell-res cell-text"><%= member.teamid %></div>
-                        <div class="cell cell-res cell-text"><%= 
+                        <!-- <div class="cell cell-res cell-text"><%= 
                             member.createdAt.toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: 'numeric'}) 
-                        %></div>
+                        %></div> -->
                         <div class="cell button-container button-cell">
-                            <button class="openEditMemberButton" value="<%=member.memberid %>">Edit</button>
+                            <button class="viewMemberInfo" value="<%=member._id %>">View</button>
+                            <button class="openEditMemberButton" value="<%=member._id %>">Edit</button>
                             <button class="deleteMemberForm" value="<%=member.memberid %>">Delete</button>
                         </div>
                     <% }); %>
