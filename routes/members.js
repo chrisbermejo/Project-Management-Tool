@@ -15,11 +15,28 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/api/:memberId/', async (req, res) => {
+router.get('/api/:memberId/edit', async (req, res) => {
   try {
+<<<<<<< HEAD
+    const memberID = req.params.memberID;
+    console.log(memberID);
+    const memberINFO = await member.findOne({_id: memberID});
+=======
     const memberId = req.params.memberId;
     const memberINFO = await member.findOne({ memberid: memberId});
+>>>>>>> 8915792f745828786c41f0a1fa0d121b119c144b
     console.log(memberINFO);
+    res.json(memberINFO);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
+
+router.get('/view/:memberID', async (req, res) => {
+  try {
+    const memberID = req.params.memberID;
+    const memberINFO = await member.findOne({_id: memberID});
     res.json(memberINFO);
   } catch (err) {
     console.error(err);
