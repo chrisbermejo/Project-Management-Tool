@@ -27,7 +27,7 @@ router.get('/api/:memberID/', async (req, res) => {
   }
 });
 
-router.get('/view/:memberID', async (req, res) => {
+router.get('/member/:memberID/view', async (req, res) => {
   try {
     const memberID = req.params.memberID;
     const memberINFO = await member.findOne({_id: memberID}, "memberid fname lname email role isActive teamID");
@@ -39,7 +39,7 @@ router.get('/view/:memberID', async (req, res) => {
 });
 
 router.post('/submit-form', async (req, res) => {
-
+p
   const { memberid, fname, lname, email, role, isActive, teamid } = req.body;
   console.log({ memberid, fname, lname, email, role, isActive, teamid});
   const newMember = await member.create({memberid, fname, lname, email, role, isActive, teamid});
@@ -47,6 +47,20 @@ router.post('/submit-form', async (req, res) => {
   console.log('Member Saved!');  
   res.redirect('/dashboard/members');
   
+});
+
+router.post('/member/:member_ID/edit/update', async (req, res) => {
+
+  const member_ID = req.params.member_ID;
+  const { memberid, fname, lname, email, role, isActive, teamid } = req.body;
+  await member.updateOne({_id: member_ID}, {memberid, fname, lname, email, role, isActive, teamid});
+  console.log('Member Updated!');  
+  res.redirect('/dashboard/members');
+  
+});
+
+router.get('/member/:memberid/edit', async (req, res) => {
+  res.redirect('/dashboard/members');
 });
 
 // router.post('/edit-form', async (req, res) => {

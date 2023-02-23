@@ -113,7 +113,7 @@
             <dialog id="editMemberForm">
                 <section>
                     <div class="middle">
-                        <form onsubmit="validateForm(event)" action="/dashboard/members/edit-form" method="POST" id="edit-member-form">
+                        <form onsubmit="edit_validateForm(event)" method="POST" id="edit-member-form">
                             <label for="memberid" id="memberid-error">Member ID:</label>
                             <input type="number" name="memberid" id="edit-memberid" min="1">
             
@@ -145,7 +145,7 @@
                             <input type="number" name="teamid" id="edit-teamid" min="1">
                             
                             <div class="button-container">
-                                <button id="edit-Update" class="closeEditMember" type="submit" value="">UPDATE</button>
+                                <button type="submit" id="edit-Update" class="closeEditMember">UPDATE</button>
                                 <button class="closeEditMember" type="button">CANCEL</button>
                             </div>
 
