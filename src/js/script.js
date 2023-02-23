@@ -170,7 +170,7 @@ openEditMemberDialogButton.forEach(editButton => {
     const memberId = event.target.value;
 
     try {
-      const response = await fetch(`/dashboard/members/api/${memberId}`);
+      const response = await fetch(`/dashboard/members/member/${memberId}/get`);
       const member = await response.json();
       console.log(member._id);
       edit_memberform.action = `/dashboard/members/member/${member._id}/edit/update`
@@ -205,3 +205,4 @@ function edit_validateForm(event) {
     event.target.submit();
   }
 }
+
