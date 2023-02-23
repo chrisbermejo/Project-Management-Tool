@@ -30,7 +30,7 @@ router.get('/api/:memberID/', async (req, res) => {
 router.get('/view/:memberID', async (req, res) => {
   try {
     const memberID = req.params.memberID;
-    const memberINFO = await member.findOne({_id: memberID});
+    const memberINFO = await member.findOne({_id: memberID}, "memberid fname lname email role isActive teamID");
     res.json(memberINFO);
   } catch (err) {
     console.error(err);
@@ -41,7 +41,6 @@ router.get('/view/:memberID', async (req, res) => {
 router.post('/submit-form', async (req, res) => {
 
   const { memberid, fname, lname, email, role, isActive, teamid } = req.body;
-  console.log(req.body.memberid);
   console.log({ memberid, fname, lname, email, role, isActive, teamid});
   const newMember = await member.create({memberid, fname, lname, email, role, isActive, teamid});
   newMember.save();
