@@ -2,81 +2,84 @@
 function validation() {
   let isValid = true;
 
-  // if (memberid.value === "" || isNaN(memberid.value) || parseInt(memberid.value) < 1) {
-  //   memberidError.classList.add('label-error');
-  //   memberid.classList.add('input-error');
-  //   isValid = false;
-  // } else {
-  //   memberidError.classList.remove('label-error');
-  //   memberid.classList.remove('input-error');
-  // }
+  if (memberid.value === "" || isNaN(memberid.value) || parseInt(memberid.value) < 1) {
+    memberidError.classList.add('label-error');
+    memberid.classList.add('input-error');
+    isValid = false;
+  } else {
+    memberidError.classList.remove('label-error');
+    memberid.classList.remove('input-error');
+  }
 
-  // if (fname.value === "" || !/^[a-zA-Z ]+$/.test(fname.value)) {
-  //   fnameError.classList.add('label-error');
-  //   fname.classList.add('input-error');
-  //   isValid = false;
-  // } else {
-  //   fnameError.classList.remove('label-error');
-  //   fname.classList.remove('input-error');
-  // }
+  if (fname.value === "" || !/^[a-zA-Z ]+$/.test(fname.value)) {
+    fnameError.classList.add('label-error');
+    fname.classList.add('input-error');
+    isValid = false;
+  } else {
+    fnameError.classList.remove('label-error');
+    fname.classList.remove('input-error');
+  }
 
-  // if (lname.value === "" || !/^[a-zA-Z ]+$/.test(lname.value)) {
-  //   lnameError.classList.add('label-error');
-  //   lname.classList.add('input-error');
-  //   isValid = false;
-  // } else {
-  //   lnameError.classList.remove('label-error');
-  //   lname.classList.remove('input-error');
-  // }
+  if (lname.value === "" || !/^[a-zA-Z ]+$/.test(lname.value)) {
+    lnameError.classList.add('label-error');
+    lname.classList.add('input-error');
+    isValid = false;
+  } else {
+    lnameError.classList.remove('label-error');
+    lname.classList.remove('input-error');
+  }
 
-  // if (email.value === "" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-  //   emailError.classList.add('label-error');
-  //   email.classList.add('input-error');
-  //   isValid = false;
-  // } else {
-  //   emailError.classList.remove('label-error');
-  //   email.classList.remove('input-error');
-  // }
+  if (email.value === "" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+    emailError.classList.add('label-error');
+    email.classList.add('input-error');
+    isValid = false;
+  } else {
+    emailError.classList.remove('label-error');
+    email.classList.remove('input-error');
+  }
 
-  // if (role.value === "") {
-  //   roleError.classList.add('label-error');
-  //   role.classList.add('input-error');
-  //   isValid = false;
-  // } else {
-  //   roleError.classList.remove('label-error');
-  //   role.classList.remove('input-error');
-  // }
+  if (role.value === "") {
+    roleError.classList.add('label-error');
+    role.classList.add('input-error');
+    isValid = false;
+  } else {
+    roleError.classList.remove('label-error');
+    role.classList.remove('input-error');
+  }
 
-  // if (isActive.value === "") {
-  //   isActiveError.classList.add('label-error');
-  //   isActive.classList.add('input-error');
-  //   isValid = false;
-  // } else {
-  //   isActiveError.classList.remove('label-error');
-  //   isActive.classList.remove('input-error');
-  // }
+  if (isActive.value === "") {
+    isActiveError.classList.add('label-error');
+    isActive.classList.add('input-error');
+    isValid = false;
+  } else {
+    isActiveError.classList.remove('label-error');
+    isActive.classList.remove('input-error');
+  }
 
-  // if (teamid.value === "" || isNaN(teamid.value) || parseInt(teamid.value) < 1) {
-  //   teamidError.classList.add('label-error');
-  //   teamid.classList.add('input-error');
-  //   isValid = false;
-  // } else {
-  //   teamidError.classList.remove('label-error');
-  //   teamid.classList.remove('input-error');
-  // }
+  if (teamid.value === "" || isNaN(teamid.value) || parseInt(teamid.value) < 1) {
+    teamidError.classList.add('label-error');
+    teamid.classList.add('input-error');
+    isValid = false;
+  } else {
+    teamidError.classList.remove('label-error');
+    teamid.classList.remove('input-error');
+  }
 
   return isValid;
 }
 
 
 
-//Add Member Dialog
-let openAddMemberDialogButton = document.getElementById('openAddMemberButton');
-let AddMemberDialog = document.getElementById('addMemberForm');
-let closeAddMemberDialog = document.querySelectorAll('.closeAddMember');
+//Member Dialog
+let addMemberButton = document.getElementById('addMemberButton');
+let editButtons = document.querySelectorAll('.openEditMemberButton');
 
-//add-form
-let memberform = document.getElementById('add-member-form');
+let memberDialog = document.getElementById('memberForm');
+let closeDialog = document.getElementById('close');
+let submitDialog = document.getElementById('submit-button');
+
+//Form
+let memberform = document.getElementById('member-form');
 
 let memberid = document.getElementById("memberid");
 let memberidError = document.getElementById("memberid-error");
@@ -116,76 +119,23 @@ function removeClasses(){
   memberid.classList.remove('input-error');
 }
 
-openAddMemberDialogButton.addEventListener('click', function () {
-  if (typeof AddMemberDialog.showModal === "function") {
-    AddMemberDialog.showModal();
-  } else {
-    console.log("The <dialog> API is not supported by this browser");
-  }
-});
-
-function validateForm(event) {
-  event.preventDefault();
-  let isValid = validation();
-
-  if (isValid) {
-    closeAddMemberDialog[0].addEventListener('click', function() {
-      AddMemberDialog.close();
-    });      
-    event.target.submit();
-  }
-}
-
-closeAddMemberDialog[1].addEventListener('click', function() {
-  AddMemberDialog.close();
-  memberform.reset()
-  removeClasses();
-});
-
-
-//edit-form
-let edit_memberid = document.getElementById("edit-memberid");
-let edit_fname = document.getElementById("edit-fname");
-let edit_lname = document.getElementById("edit-lname");
-let edit_email = document.getElementById("edit-email");
-let edit_role = document.getElementById("edit-role");
-let edit_isActive = document.getElementById("edit-isActive");
-let edit_teamid = document.getElementById("edit-teamid");
-let edit_button = document.getElementById("edit-Update");
-
-//Edit Member Dialog
-let edit_memberform = document.getElementById('edit-member-form');
-let openEditMemberDialogButton = document.querySelectorAll('.openEditMemberButton');
-let EditMemberDialog = document.getElementById('editMemberForm');
-let closeEditMemberDialog = document.querySelectorAll('.closeEditMember');
-
-closeEditMemberDialog[1].addEventListener('click', function() {
-  history.back();
-  EditMemberDialog.close();
-  removeClasses();
-});
-
-openEditMemberDialogButton.forEach(editButton => {
+editButtons.forEach(editButton => {
   editButton.addEventListener('click', async (event) => {
     const memberId = event.target.value;
-
     try {
       const response = await fetch(`/dashboard/members/member/${memberId}/get`);
       const member = await response.json();
-      console.log(member._id);
-      edit_memberform.action = `/dashboard/members/member/${member._id}/edit/update`
-      edit_memberid.value = member.memberid;
-      edit_fname.value = member.fname;
-      edit_lname.value = member.lname;
-      edit_email.value = member.email;
-      edit_role.value = member.role;
-      edit_isActive.value = member.isActive;
-      edit_teamid.value = member.teamid;
-
-      EditMemberDialog.showModal();
-      const url = `/dashboard/members/member/${member.memberid}/edit`;
-			const title = "EDIT";
-			history.pushState(null, title, url);
+      memberform.action = `/dashboard/members/member/${member._id}/edit/update`
+      memberid.value = member.memberid;
+      fname.value = member.fname;
+      lname.value = member.lname;
+      email.value = member.email;
+      role.value = member.role;
+      isActive.value = member.isActive;
+      teamid.value = member.teamid;
+      submitDialog.innerHTML = "EDIT";
+      memberDialog.showModal();
+			history.pushState(null, 'EDIT', `/dashboard/members/member/${member.memberid}/edit`);
 
 
     } catch (err) {
@@ -194,15 +144,25 @@ openEditMemberDialogButton.forEach(editButton => {
   });
 });
 
-function edit_validateForm(event) {
+function validateForm(event) {
   event.preventDefault();
   let isValid = validation();
-
-  if (isValid) {
-    closeEditMemberDialog[0].addEventListener('click', function() {
-      EditMemberDialog.close();
-    });      
+  if (isValid) {   
+    history.back();
     event.target.submit();
   }
 }
 
+addMemberButton.addEventListener('click', function () {
+  memberform.reset();
+  submitDialog.innerHTML = "ADD";
+  history.pushState(null, 'ADD', `/dashboard/members/member/add`);
+  memberDialog.showModal();
+});
+
+closeDialog.addEventListener('click', function() {
+  history.back();
+  memberDialog.close();
+  memberform.reset();
+  removeClasses();
+});

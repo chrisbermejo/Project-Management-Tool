@@ -30,7 +30,7 @@
             <div class="main-member-header-container">
                 <div class="main-member-header">
                     <h1>Members</h1>
-                    <button id="openAddMemberButton" class="circle-container material-symbols-outlined" type="button">
+                    <button id="addMemberButton" class="circle-container material-symbols-outlined" type="button">
                         person_add
                     </button>
                 </div>
@@ -66,10 +66,10 @@
                 </div>
             </div>
 
-            <dialog id="addMemberForm">
+            <dialog id="memberForm">
                 <section>
                     <div class="middle">
-                        <form onsubmit="validateForm(event)" action="/dashboard/members/submit-form" method="POST" id="add-member-form">
+                        <form onsubmit="validateForm(event)" action="/dashboard/members/submit-form" method="POST" id="member-form">
                             <label for="memberid" id="memberid-error">Member ID:</label>
                             <input type="number" name="memberid" id="memberid" min="1">
             
@@ -101,59 +101,14 @@
                             <input type="number" name="teamid" id="teamid" min="1">
                             
                             <div class="button-container">
-                                <button class="closeAddMember" type="submit">CREATE</button>
-                                <button class="closeAddMember" type="button">CANCEL</button>
+                                <button id="submit-button" type="submit">CREATE</button>
+                                <button id="close" type="button">CANCEL</button>
                             </div>
 
                         </form>
                     </div>
                 </section>
             </dialog>
-
-            <dialog id="editMemberForm">
-                <section>
-                    <div class="middle">
-                        <form onsubmit="edit_validateForm(event)" method="POST" id="edit-member-form">
-                            <label for="memberid" id="memberid-error">Member ID:</label>
-                            <input type="number" name="memberid" id="edit-memberid" min="1">
-            
-                            <label for="fname" id="fname-error">First Name:   </label>
-                            <input type="text" name="fname" id="edit-fname">
-            
-                            <label for="lname" id="lname-error">Last Name:   </label>
-                            <input type="text" name="lname" id="edit-lname">
-            
-                            <label for="email" id="email-error">Email:   </label>
-                            <input type="email" name="email" id="edit-email">
-            
-                            <label for="role" id="role-error">Role:</label>
-                            <select name="role" id="edit-role">
-                                <option value="">-- Select Role --</option>
-                                <option value="admin">Admin</option>
-                                <option value="member">Member</option>
-                                <option value="guest">Guest</option>
-                            </select>
-            
-                            <label for="isActive" id="isActive-error">Is Active:</label>
-                            <select name="isActive" id="edit-isActive">
-                                <option value="">-- Select Active Status --</option>
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
-                            </select>
-            
-                            <label for="teamid" id="teamid-error">Team ID:</label>
-                            <input type="number" name="teamid" id="edit-teamid" min="1">
-                            
-                            <div class="button-container">
-                                <button type="submit" id="edit-Update" class="closeEditMember">UPDATE</button>
-                                <button class="closeEditMember" type="button">CANCEL</button>
-                            </div>
-
-                        </form>
-                    </div>
-                </section>
-            </dialog>
-
         </div>
     </div>
 
