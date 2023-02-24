@@ -15,6 +15,18 @@ router.get('/', (req, res) => {
   }
 });
 
+router.delete('/member/:member_ID/delete', async (req, res) => {
+  try{
+    const member_ID = req.params.member_ID;
+    await member.deleteOne({_id: member_ID});
+    console.log('Member Deleted!');  
+    res.redirect('/dashboard/members');
+  }catch(err){
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
+
 router.get('/member/:memberID/get', async (req, res) => {
   try {
     const memberID = req.params.memberID;
@@ -39,7 +51,7 @@ router.get('/member/:memberID/view', async (req, res) => {
   }
 });
 
-router.post('/submit-form', async (req, res) => {
+router.post('/member/add', async (req, res) => {
   try{
     const { memberid, fname, lname, email, role, isActive, teamid } = req.body;
     console.log({ memberid, fname, lname, email, role, isActive, teamid});
@@ -53,7 +65,7 @@ router.post('/submit-form', async (req, res) => {
   }
 });
 
-router.post('/member/:member_ID/edit/update', async (req, res) => {
+router.put('/member/:member_ID/edit/update', async (req, res) => {
   try{
     const member_ID = req.params.member_ID;
     const { memberid, fname, lname, email, role, isActive, teamid } = req.body;
@@ -67,6 +79,9 @@ router.post('/member/:member_ID/edit/update', async (req, res) => {
 });
 
 router.get('/member/:memberid/edit', async (req, res) => {
+  res.redirect('/dashboard/members');
+});
+router.get('/member/:memberid/', async (req, res) => {
   res.redirect('/dashboard/members');
 });
 

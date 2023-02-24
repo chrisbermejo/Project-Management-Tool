@@ -68,7 +68,31 @@ function validation() {
   return isValid;
 }
 
+function removeClasses(){
+  teamidError.classList.remove('label-error');
+  teamid.classList.remove('input-error');
+  isActiveError.classList.remove('label-error');
+  isActive.classList.remove('input-error');
+  roleError.classList.remove('label-error');
+  role.classList.remove('input-error');
+  emailError.classList.remove('label-error');
+  email.classList.remove('input-error');
+  lnameError.classList.remove('label-error');
+  lname.classList.remove('input-error');
+  fnameError.classList.remove('label-error');
+  fname.classList.remove('input-error');
+  memberidError.classList.remove('label-error');
+  memberid.classList.remove('input-error');
+}
 
+function validateForm(event) {
+  event.preventDefault();
+  let isValid = validation();
+  if (isValid) {   
+    history.back();
+    event.target.submit();
+  }
+}
 
 //Member Dialog
 let addMemberButton = document.getElementById('addMemberButton');
@@ -102,30 +126,13 @@ let isActiveError = document.getElementById("isActive-error");
 let teamid = document.getElementById("teamid");
 let teamidError = document.getElementById("teamid-error");
 
-function removeClasses(){
-  teamidError.classList.remove('label-error');
-  teamid.classList.remove('input-error');
-  isActiveError.classList.remove('label-error');
-  isActive.classList.remove('input-error');
-  roleError.classList.remove('label-error');
-  role.classList.remove('input-error');
-  emailError.classList.remove('label-error');
-  email.classList.remove('input-error');
-  lnameError.classList.remove('label-error');
-  lname.classList.remove('input-error');
-  fnameError.classList.remove('label-error');
-  fname.classList.remove('input-error');
-  memberidError.classList.remove('label-error');
-  memberid.classList.remove('input-error');
-}
-
 editButtons.forEach(editButton => {
   editButton.addEventListener('click', async (event) => {
     const memberId = event.target.value;
     try {
       const response = await fetch(`/dashboard/members/member/${memberId}/get`);
       const member = await response.json();
-      memberform.action = `/dashboard/members/member/${member._id}/edit/update`
+      memberform.action = `/dashboard/members/member/${member._id}/edit/update?_method=PUT`;
       memberid.value = member.memberid;
       fname.value = member.fname;
       lname.value = member.lname;
@@ -133,10 +140,9 @@ editButtons.forEach(editButton => {
       role.value = member.role;
       isActive.value = member.isActive;
       teamid.value = member.teamid;
-      submitDialog.innerHTML = "EDIT";
+      submitDialog.innerHTML = "UPDATE";
       memberDialog.showModal();
 			history.pushState(null, 'EDIT', `/dashboard/members/member/${member.memberid}/edit`);
-
 
     } catch (err) {
       console.error(err);
@@ -144,19 +150,11 @@ editButtons.forEach(editButton => {
   });
 });
 
-function validateForm(event) {
-  event.preventDefault();
-  let isValid = validation();
-  if (isValid) {   
-    history.back();
-    event.target.submit();
-  }
-}
-
 addMemberButton.addEventListener('click', function () {
+  memberform.action = "/dashboard/members/member/add";
   memberform.reset();
   submitDialog.innerHTML = "ADD";
-  history.pushState(null, 'ADD', `/dashboard/members/member/add`);
+  history.pushState(null, 'ADD', '/dashboard/members/member/add');
   memberDialog.showModal();
 });
 

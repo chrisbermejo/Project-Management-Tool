@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const memberRoute = require('./routes/members');
 const loginRoute = require('./routes/login');
 const PORT = 3000;
@@ -9,11 +10,11 @@ const app = express();
 require('./database');
 
 app.use(express.static('src'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
-
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/dashboard/members', memberRoute);
 app.use('/login/', loginRoute);

@@ -60,7 +60,10 @@
                         <div class="cell button-container button-cell">
                             <button class="viewMemberInfo" onclick="location.href='/dashboard/members/member/<%=member._id%>/view';" >View</button>
                             <button class="openEditMemberButton" value="<%=member._id %>">Edit</button>
-                            <button class="deleteMemberForm" value="<%=member.memberid %>">Delete</button>
+                                <form method="POST" action="/dashboard/members/member/<%=member._id %>/delete?_method=DELETE">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </button>
                         </div>
                     <% }); %>
                 </div>
@@ -69,7 +72,8 @@
             <dialog id="memberForm">
                 <section>
                     <div class="middle">
-                        <form onsubmit="validateForm(event)" action="/dashboard/members/submit-form" method="POST" id="member-form">
+                        <form onsubmit="validateForm(event)" action="/dashboard/members/member/add" id="member-form" method="POST">
+
                             <label for="memberid" id="memberid-error">Member ID:</label>
                             <input type="number" name="memberid" id="memberid" min="1">
             
@@ -109,6 +113,7 @@
                     </div>
                 </section>
             </dialog>
+            
         </div>
     </div>
 
