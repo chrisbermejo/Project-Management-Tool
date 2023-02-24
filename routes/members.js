@@ -70,15 +70,4 @@ router.get('/member/:memberid/edit', async (req, res) => {
   res.redirect('/dashboard/members');
 });
 
-// router.post('/edit-form', async (req, res) => {
-//   const { memberid, fname, lname, email, role, isActive, teamid } = req.body;
-//   console.log({ memberid, fname, lname, email, role, isActive, teamid});
-//   const newMember = await member.collection("member").updateOne( )
-  
-//   {memberid, fname, lname, email, role, isActive, teamid});
-//   newMember.save();
-//   console.log('Member Saved!');  
-//   res.redirect('/dashboard/members');
-// });
-
 module.exports = router;
