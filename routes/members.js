@@ -7,7 +7,7 @@ router.use(express.static('src'));
 router.get('/', (req, res) => {
   try{
     member.find({}, (err, data) => {
-      res.render('main-member', { members: data });
+      res.render('members/main-member', { members: data });
     });
   }catch(err){
     console.log(err);
@@ -30,8 +30,18 @@ router.delete('/member/:member_ID/delete', async (req, res) => {
 router.get('/member/:memberID/get', async (req, res) => {
   try {
     const memberID = req.params.memberID;
-    console.log(memberID);
-    const memberINFO = await member.findOne({_id: memberID});
+    const memberINFO = await member.findOne({_id: memberID}, "memberid fname lname email role isActive teamid");
+    res.json(memberINFO);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
+
+router.get('/member/:memberID/get/id', async (req, res) => {
+  try {
+    const memberID = req.params.memberID;
+    const memberINFO = await member.findOne({_id: memberID}, "memberid");
     res.json(memberINFO);
   } catch (err) {
     console.error(err);
@@ -43,8 +53,7 @@ router.get('/member/:memberID/view', async (req, res) => {
   try {
     const memberID = req.params.memberID;
     const memberINFO = await member.findOne({_id: memberID}, "memberid fname lname email role isActive teamid");
-    console.log(memberINFO);
-    res.render('view-member', {member: memberINFO});
+    res.render('members/view-member', {member: memberINFO});
   } catch (err) {
     console.error(err);
     res.sendStatus(500);
@@ -54,7 +63,6 @@ router.get('/member/:memberID/view', async (req, res) => {
 router.post('/member/add', async (req, res) => {
   try{
     const { memberid, fname, lname, email, role, isActive, teamid } = req.body;
-    console.log({ memberid, fname, lname, email, role, isActive, teamid});
     const newMember = await member.create({memberid, fname, lname, email, role, isActive, teamid});
     newMember.save();
     console.log('Member Saved!');  
@@ -84,5 +92,9 @@ router.get('/member/:memberid/edit', async (req, res) => {
 router.get('/member/:memberid/', async (req, res) => {
   res.redirect('/dashboard/members');
 });
+router.get('/member/:member_ID/delete/menu', async (req, res) => {
+  res.redirect('/dashboard/members');
+});
+
 
 module.exports = router;

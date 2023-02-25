@@ -164,3 +164,28 @@ closeDialog.addEventListener('click', function() {
   memberform.reset();
   removeClasses();
 });
+
+let deleteDialog = document.getElementById('deleteForm');
+let deleteButtons = document.querySelectorAll('.openDeleteForm');
+let deleteForm = document.getElementById('delete-form');
+let closeDelete = document.getElementById('delete-close');
+
+deleteButtons.forEach(deleteButton => {
+  deleteButton.addEventListener('click', async (event) => {
+    const memberId = event.target.value;
+    try {
+      const response = await fetch(`/dashboard/members/member/${memberId}/get/id`);
+      const member = await response.json();
+      history.pushState(null, 'DELETE', `/dashboard/members/member/${member.memberid}/delete/menu`);
+      deleteForm.action = `/dashboard/members/member/${memberId}/delete?_method=DELETE`;
+      deleteDialog.showModal();
+    } catch (err) {
+      console.error(err);
+    }
+  });
+});
+
+closeDelete.addEventListener('click', function() {
+  history.back();
+  deleteDialog.close();
+});

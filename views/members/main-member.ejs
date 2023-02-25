@@ -17,10 +17,10 @@
     <div class="main-member-container">
         <div class="main-member-nav-container">
             <div class="main-member-nav">
-                <a id="first-button" href="/dashboard/">Dashboard</a>
+                <a href="/dashboard/">Dashboard</a>
                 <a id="active" href="/dashboard/members/">Members</a>
-                <a href="/dashboard/project/">Project</a>
-                <a href="/dashboard/task/">Task</a>
+                <a href="/dashboard/projects/">Projects</a>
+                <a href="/dashboard/tasks/">Tasks</a>
                 <div class="left-button-container">
                     <a id="last-button" href="/login/">Logout</a>
                 </div>
@@ -60,10 +60,7 @@
                         <div class="cell button-container button-cell">
                             <button class="viewMemberInfo" onclick="location.href='/dashboard/members/member/<%=member._id%>/view';" >View</button>
                             <button class="openEditMemberButton" value="<%=member._id %>">Edit</button>
-                                <form method="POST" action="/dashboard/members/member/<%=member._id %>/delete?_method=DELETE">
-                                    <button type="submit">Delete</button>
-                                </form>
-                            </button>
+                            <button class="openDeleteForm" value="<%=member._id %>">Delete</button>
                         </div>
                     <% }); %>
                 </div>
@@ -113,7 +110,20 @@
                     </div>
                 </section>
             </dialog>
-            
+
+            <dialog id="deleteForm">
+                <section>
+                    <div class="middle">
+                        <form method="POST" action="" id="delete-form">
+                            <div  style="padding-top: 0px" class="button-container">
+                                <button id="delete-submit" type="submit">DELETE</button>
+                                <button id="delete-close" type="button">CANCEL</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </dialog>
+
         </div>
     </div>
 

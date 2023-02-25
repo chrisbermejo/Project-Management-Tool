@@ -7,7 +7,7 @@ router.use(express.static('src'));
 router.get('/', (req, res) => {
   try{
     member.find({}, (err, data) => {
-      res.render('dashboard', { members: data });
+      res.render('tasks/main-tasks', { members: data });
     });
   }catch(err){
     console.log(err);
