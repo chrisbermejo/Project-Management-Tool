@@ -27,7 +27,7 @@ app.use('/dashboard/', dashboardRoute);
 app.use('/login/', loginRoute);
 
 app.get('/', function(req, res) {
-  res.redirect('/login/')
+  res.redirect('/login/');
 });
 
 app.listen(PORT, () => {

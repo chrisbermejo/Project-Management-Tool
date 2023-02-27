@@ -5,7 +5,6 @@ router.use(express.static('src'));
 
 router.get('/', (req, res) => {
   try{
-    console.log('hello')
     console.log(req.session.user);
     res.render('dashboard', {user: req.session.user});
   }catch(err){
