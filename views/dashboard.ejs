@@ -14,17 +14,21 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <div class="main-member-container">
-        <div class="main-member-nav-container">
-            <div class="main-member-nav">
-                <a id="active" href="/dashboard/">Dashboard</a>
-                <a href="/dashboard/members/">Members</a>
-                <a href="/dashboard/projects/">Projects</a>
-                <a href="/dashboard/tasks/">Tasks</a>
-                <div class="left-button-container">
-                    <a id="last-button" href="/login/">Logout</a>
-                </div>
+    <div class="dashboard">
+        <p style="padding-left:30px;padding-bottom:5px;">Currently Logged: <%= user.fname %> <%= user.lname %></p>
+        <div class="dashboard-container">
+
+            <div class="icon-container">
+                <a href="/dashboard/members/"><span class="material-symbols-outlined">person</span></a>
+                <a href="/dashboard/projects/"><span class="material-symbols-outlined">groups</span></a>
+                <a href="/dashboard/tasks/"><span class="material-symbols-outlined">assignment</span></a>
             </div>
+
+            <div class="icon-container">
+                <a href="/login/"><span class="material-symbols-outlined">manage_accounts </span></a>
+                <a href="/login/"><span class="material-symbols-outlined">exit_to_app</span></a>
+            </div>
+            
         </div>
     </div>
 </body>

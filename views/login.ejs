@@ -5,30 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/js/script.js"></script>
     <link rel="stylesheet" href="/css/main.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Login</title>
 </head>
 
 <body>
-    <section>
-        <div class="middle">
-            <hgroup>
-                <h1>WELCOME!</h1>
-            </hgroup>
-            <div style="border-top:solid 5px white"></div>
-            <form action="/dashboard/members/add-member/submit-form" method="POST" id="member-form">
+    <div>
+        <div class="login">
+            <form class="login-form" action="/login/signin" method="POST">
+                <h1>Login</h1>
 
-                <label for="email">EMAIL:   </label>
-                <input type="email" name="email" id="email">
+                <div class="memberid-container">
+                    <input type="text" placeholder="Member ID" id="memberid" name="memberid">
+                    <i class="material-symbols-outlined">badge</i>
+                </div>
+                
+                <div class="email-container">
+                    <input type="email" placeholder="Email" class="input-with-email-logo" name="email">
+                    <i class="material-symbols-outlined">email</i>
+                </div>
 
-                <label for="pwd">PASSWORD:   </label>
-                <input type="password" name="pwd" id="pwd">
+                <div class="password-container">
+                    <input type="password" placeholder="Password" id="password" name="password">
+                    <i class="material-symbols-outlined" id="show-password">key</i>
+                </div>
 
-                <button type="submit">LOGIN</button>
+                <div class="signin-buttons">
+                    <button type="submit">Login</button>
+                    <button type="button">Sign Up</button>
+                </div>
             </form>
         </div>
-    </section>
+    </div>
 </body>
+
+<script src="/js/loginjs.js"></script>
+
 </html> 

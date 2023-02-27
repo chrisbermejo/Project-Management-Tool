@@ -5,28 +5,12 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.Number,
         required: true,
     },
-    fname: {
-        type: mongoose.SchemaTypes.String,
-        required: true,
-    },
-    lname: {
-        type: mongoose.SchemaTypes.String,
-        required: true,
-    },
     email: {
         type: mongoose.SchemaTypes.String,
         required: true,
     },
-    role: {
+    password: {
         type: mongoose.SchemaTypes.String,
-        required: true,
-    },
-    isActive: {
-        type: mongoose.SchemaTypes.String,
-        required: true,
-    },
-    teamid: {
-        type: mongoose.SchemaTypes.Number,
         required: true,
     },
     createdAt: {
@@ -36,5 +20,5 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('members', UserSchema);
+module.exports = mongoose.model('users', UserSchema);
 

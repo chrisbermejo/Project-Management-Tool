@@ -4,6 +4,10 @@ html, *{
     box-sizing: border-box;
 }
 
+input::-ms-reveal, input::-ms-clear {
+        display: none;
+}
+
 dialog {
     border: 0px;
     border-radius: 30px;
@@ -27,7 +31,8 @@ dialog {
     padding-bottom: 10px;
 }
 
-input[type='text'],input[type='email'],input[type='number'], input[type='password'], button[type='submit'], select{
+#member-form input[type='text'], #member-form input[type='email'],
+#member-form input[type='number'], #member-form input[type='password'], select{
     box-sizing: border-box;
     width:100%;
     border-radius: 10px;
@@ -49,6 +54,7 @@ input[type='text'],input[type='email'],input[type='number'], input[type='passwor
 }
 
 .button-container button{
+    padding: 6px;
     width: 50px;
     flex-grow: 1;
     border-radius: 10px;
@@ -95,7 +101,7 @@ input[type='text'],input[type='email'],input[type='number'], input[type='passwor
 
 .main-member-nav-container a:hover {
     color: black;
-    background-color: rgba(2, 2, 2, 0.2);
+    background-color: rgba(2, 2, 2, 0.4);
 }
 
 a,a:link,a:visited,a:hover,a:active{
@@ -141,7 +147,7 @@ a,a:link,a:visited,a:hover,a:active{
 
 .table-grid-container{
     display: grid;
-    grid-template-columns: repeat(8, auto);
+    grid-template-columns: repeat(7, auto);
     text-align: center;
 }
 
@@ -155,6 +161,7 @@ a,a:link,a:visited,a:hover,a:active{
 }
 
 .cell {
+    height: 36px;
     padding-top: 5px;
     padding-left:10px;
     padding-right: 10px;
@@ -176,7 +183,7 @@ h1{
 
 .cell-text{
     line-height: 23px;
-    height: 35px;
+    height: 36px;
 }
 
 .button-cell button{
@@ -199,8 +206,8 @@ h1{
 }
 
 button:hover{
-    background-color: rgb(0,0,0,0.15);
-    color:black;
+    background-color: rgba(13, 88, 250, 0.733);
+    color:white;
 }
 
 #delete-submit:hover{
@@ -210,7 +217,7 @@ button:hover{
 
 @media screen and (max-width: 1100px) {
     .table-grid-container {
-        grid-template-columns: repeat(4, auto)
+        grid-template-columns: repeat(3, auto)
     }
 
     .cell-res, .header-res{
@@ -218,4 +225,167 @@ button:hover{
     }
       
 
+}
+
+@media screen and (max-width: 500px) {
+    .table-grid-container {
+        grid-template-columns: repeat(2, auto)
+    }
+
+    .cell-res, .header-res, .cell-text-text{
+        display: none
+    }
+      
+
   }
+
+.dashboard{
+    border: 0px;
+    border-radius: 30px;
+    color: black;
+    background-color: hsla(0, 100%, 100%, 0.08);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.icon-container{
+    display: flex;
+    gap: 20px;
+    /* border: solid 5px rgba(2, 2, 2, 0.4);
+    padding: 30px;  */
+    border-radius: 35px;
+    background-color: rgb(0,0,0,0.15);
+    padding: 40px;
+
+}
+
+.icon-container a{
+    height: 150px;
+    width: 150px;
+    padding: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 35px;
+}
+
+.icon-container a:hover{
+    background-color: rgba(13, 88, 250, 0.733);
+    color: white;
+}
+
+.icon-container:last-child a:last-child:hover{
+    background-color: red;
+    color: white;
+}
+
+.icon-container a span{
+    font-size: 80px;
+    text-align: center;
+}
+
+.login{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+}
+
+.dashboard-container{
+    display: flex;
+}
+
+.dashboard-container div.icon-container:last-child{
+    margin-left: 80px;
+}
+
+@media screen and (max-width: 1080px) {
+    .dashboard{
+        width: 230px;
+        top: 47%;
+    }
+    .dashboard-container{
+        transform: scale(60%);
+    }
+
+    .dashboard-container, .icon-container{
+        flex-direction: column;
+    }
+    .dashboard-container div.icon-container:last-child{
+        margin-top: 40px;
+        margin-left: 0px;
+    }
+}
+
+#addMemberButton{
+    text-align: center;
+}
+
+.login-form input[type='text'], .login-form input[type='password'], .login-form input[type='email']{
+    box-sizing: border-box;
+    width:100%;
+    border-radius: 10px;
+    padding: 6px;
+    padding-left: 10px;
+    font-size: 20px;
+    border: 0px;
+    border-bottom: solid 1px black;
+}
+
+.login-form input[type='text']:focus, input[type='password']:focus, input[type='email']:focus {
+    outline: none;
+}
+
+.login-form{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-radius: 20px;
+    padding: 80px 20px;
+}
+
+.login-form button{
+    font-size: 20px;
+    width: 100px;
+}
+
+.signin-buttons{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-container, .email-container, .memberid-container{
+    position: relative;
+}
+
+.password-container i, .email-container i, .memberid-container i{
+    position: absolute;
+    right: 4%;
+    top: 25%;
+    color: gray;
+    user-select: none;
+}
+
+.password-container i{
+    cursor: pointer;
+}
+
+.password-container i:hover{
+    color: black;
+}
+
+.password-container input, .email-container input, .memberid-container input{
+    padding-left: 12px;
+    border-radius: 10px;
+}
+
+.login-form h1{
+    text-align: center;
+    padding-bottom: 20px;
+}

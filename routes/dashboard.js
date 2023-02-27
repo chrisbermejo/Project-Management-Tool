@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const member = require('../database/schemas/membersdb');
 
 router.use(express.static('src'));
 
 router.get('/', (req, res) => {
   try{
-    member.find({}, (err, data) => {
-      res.render('dashboard', { members: data });
-    });
+    console.log('hello')
+    console.log(req.session.user);
+    res.render('dashboard', {user: req.session.user});
   }catch(err){
     console.log(err);
     res.status(500).send(err);

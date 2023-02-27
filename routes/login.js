@@ -1,20 +1,31 @@
 const express = require('express');
 const router = express.Router();
 const member = require('../database/schemas/membersdb');
+const user = require('../database/schemas/usersdb');
 
 router.use(express.static('src'));
 
 router.get('/', (req, res) => {
-    res.render("login");
+  res.render("login");
 });
 
-router.post('/add-member/submit-form/', async (req, res) => {
-  const { memberid, fname, lname, email, role, isActive, teamid } = req.body;
-  console.log({ memberid, fname, lname, email, role, isActive, teamid});
-  const newMember = await member.create({memberid, fname, lname, email, role, isActive, teamid});
-  newMember.save();
-  console.log('Member Saved!');  
-  res.redirect('/dashboard/members/');
+router.post('/signin', async (req, res) => {
+  try {
+    const foundMember = await user.findOne({memberid: req.body.memberid, email: req.body.email, password: req.body.password});
+    console.log(foundMember);
+    if (foundMember) {
+      const userName = await member.findOne({memberid: req.body.memberid, email: req.body.email}, "fname lname");
+      req.session.user = {
+        fname: userName.fname,
+        lname: userName.lname
+      };
+      res.redirect('/dashboard/');
+    } else {
+      console.log('ERROR');
+    }
+  } catch (err) {
+    res.status(500).json({message: err.message});
+  }
 });
 
 module.exports = router;

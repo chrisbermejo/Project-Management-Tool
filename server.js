@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const session = require('./session');
 const methodOverride = require('method-override');
 const dashboardRoute = require('./routes/dashboard');
 const memberRoute = require('./routes/members');
@@ -9,7 +10,7 @@ const loginRoute = require('./routes/login');
 const PORT = 3000;
 
 const app = express();
-
+session(app);
 require('./database');
 
 app.use(express.static('src'));
