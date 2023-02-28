@@ -23,8 +23,8 @@ app.set('view engine', 'ejs');
 app.use('/dashboard/members', memberRoute);
 app.use('/dashboard/projects', projectRoute);
 app.use('/dashboard/tasks', taskRoute);
-app.use('/dashboard/', dashboardRoute);
-app.use('/login/', loginRoute);
+app.use('/dashboard', dashboardRoute);
+app.use('/login', loginRoute);
 
 app.get('/', function(req, res) {
   res.redirect('/login/');

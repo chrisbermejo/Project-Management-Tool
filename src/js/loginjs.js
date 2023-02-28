@@ -22,3 +22,26 @@ passwordInput.addEventListener('input', () => {
         passwordIcon.textContent = "visibility";
     }
 });
+
+const loginForm = document.querySelector('.login-form');
+const errorLabel = document.querySelector('.error');
+
+loginForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(loginForm);
+    console.log(formData)
+    try {
+    const response = await fetch('/login/signin', {
+        method: 'POST',
+        body: formData
+    });
+
+    if (!response.ok) {
+        errorLabel.textContent = 'Incorrect information';
+        errorLabel.classList.add('show');
+        return;
+    }
+    } catch (error) {
+    console.error(error);
+    }
+});

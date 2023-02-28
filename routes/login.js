@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 router.post('/signin', async (req, res) => {
   try {
     const foundMember = await user.findOne({memberid: req.body.memberid, email: req.body.email, password: req.body.password});
-    console.log(foundMember);
+    console.log(foundMember)
     if (foundMember) {
       const userName = await member.findOne({memberid: req.body.memberid, email: req.body.email}, "fname lname");
       req.session.user = {
@@ -21,10 +21,12 @@ router.post('/signin', async (req, res) => {
       };
       res.redirect('/dashboard/');
     } else {
-      console.log('ERROR');
+      res.status(401);
+      return;
     }
   } catch (err) {
     res.status(500).json({message: err.message});
+    return;
   }
 });
 

@@ -249,6 +249,7 @@ button:hover{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 .icon-container{
     display: flex;
     gap: 20px;
@@ -286,14 +287,6 @@ button:hover{
     text-align: center;
 }
 
-.login{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 30px;
-}
-
 .dashboard-container{
     display: flex;
 }
@@ -322,70 +315,4 @@ button:hover{
 
 #addMemberButton{
     text-align: center;
-}
-
-.login-form input[type='text'], .login-form input[type='password'], .login-form input[type='email']{
-    box-sizing: border-box;
-    width:100%;
-    border-radius: 10px;
-    padding: 6px;
-    padding-left: 10px;
-    font-size: 20px;
-    border: 0px;
-    border-bottom: solid 1px black;
-}
-
-.login-form input[type='text']:focus, input[type='password']:focus, input[type='email']:focus {
-    outline: none;
-}
-
-.login-form{
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    border-radius: 20px;
-    padding: 80px 20px;
-}
-
-.login-form button{
-    font-size: 20px;
-    width: 100px;
-}
-
-.signin-buttons{
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.password-container, .email-container, .memberid-container{
-    position: relative;
-}
-
-.password-container i, .email-container i, .memberid-container i{
-    position: absolute;
-    right: 4%;
-    top: 25%;
-    color: gray;
-    user-select: none;
-}
-
-.password-container i{
-    cursor: pointer;
-}
-
-.password-container i:hover{
-    color: black;
-}
-
-.password-container input, .email-container input, .memberid-container input{
-    padding-left: 12px;
-    border-radius: 10px;
-}
-
-.login-form h1{
-    text-align: center;
-    padding-bottom: 20px;
 }
