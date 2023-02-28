@@ -11,6 +11,8 @@ router.get('/', (req, res) => {
 
 router.post('/signin', async (req, res) => {
   try {
+    console.log(req.body);
+    console.log(req.body.memberid)
     const foundMember = await user.findOne({memberid: req.body.memberid, email: req.body.email, password: req.body.password});
     console.log(foundMember)
     if (foundMember) {

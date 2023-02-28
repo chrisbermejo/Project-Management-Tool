@@ -23,13 +23,12 @@ passwordInput.addEventListener('input', () => {
     }
 });
 
-const loginForm = document.querySelector('.login-form');
+const loginForm = document.getElementById('joe');
 const errorLabel = document.querySelector('.error');
 
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const formData = new FormData(loginForm);
-    console.log(formData)
+    const formData = new FormData(document.querySelector('#joe'));
     try {
     const response = await fetch('/login/signin', {
         method: 'POST',
