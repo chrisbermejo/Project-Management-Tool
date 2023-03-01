@@ -28,14 +28,21 @@ const errorLabel = document.querySelector('.error');
 
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const formData = new FormData(loginForm);
-    console.log(formData)
+    const data = {};
+    new FormData( loginForm ).forEach((value, key) => data[key] = value);
+    console.log(data)
     try {
     const response = await fetch('/login/signin', {
         method: 'POST',
-        body: formData
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+        body: new URLSearchParams(data)
     });
-
+    console.log(response.ok);
+    if (response.ok) {
+        window.location.href = '/dashboard';
+    }
     if (!response.ok) {
         errorLabel.textContent = 'Incorrect information';
         errorLabel.classList.add('show');
