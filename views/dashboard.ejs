@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=.5 ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/dashboard.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -19,15 +19,14 @@
             <div class="icon-container">
                 <a class="emptyspace"></a>
                 <a  id="active" class="icon material-symbols-outlined" ref="/dashboard/">dashboard</a>
-                <a class="icon"></a>
+                
                 <a class="icon material-symbols-outlined" href="/dashboard/members/">person</a>
-                <a class="icon"></a>
+                
                 <a class="icon material-symbols-outlined" href="/dashboard/projects/">groups</a>
-                <a class="icon"></a>
+                
                 <a class="icon material-symbols-outlined" href="/dashboard/tasks/">assignment</a>
                 <a class="emptyspace"></a>
                 <a class="icon material-symbols-outlined" href="/login/">manage_accounts</a>
-                <a class="icon"></a>
                 <a class="icon material-symbols-outlined" href="/login/">exit_to_app</a>
                 <a class="icon" style="height:15px"></a>
             </div>
@@ -63,23 +62,45 @@
                         <div class="empty"></div>
                     </div>
                     <div class="main-screen-task-container">
-                        <a>Active</a>
-                        <a>Completed</a>
+                        <button id="task_active" type="button">Active</button>
+                        <button type="button">Completed</button>
                         <a class="empty"></a>
-                        <a>View More</a>
-                    </div>
-                    <div class="main-screen-task-container">
-                        <a href="#" class="tab">Tab 1</a>
-                        <a href="#" class="tab active" id="task_active">Tab 2</a>
-                        <a href="#" class="tab">Tab 3</a>
-                    </div> 
-                    <div class="main-screen-task-container">
-                        <a href="#" class="tab">Tab 1</a>
-                        <a href="#" class="tab active" id="task_active">Tab 2</a>
-                        <a href="#" class="tab">Tab 3</a>
+                        <button type="button">View More</button>
                     </div>
                      
+                    <div class="task-card-container">
+                        <div class="task-card">
+                            <img src="/img/pfp_placeholder.png">
+                            <div class="task-card-text">
+                                <div>Name Project</div>
+                                <div>Leader: CHRISTOPHER BERMEJO </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-card-container">
+                        <div class="task-card">
+                            <img src="/img/pfp_placeholder.png">
+                            <div class="task-card-text">
+                                <div>Name Project</div>
+                                <div>Leader: Christopher Bermejo </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="icon-container">
+                <a class="emptyspace"></a>
+                <a  id="active" class="icon material-symbols-outlined" ref="/dashboard/">dashboard</a>
+                
+                <a class="icon material-symbols-outlined" href="/dashboard/members/">person</a>
+                
+                <a class="icon material-symbols-outlined" href="/dashboard/projects/">groups</a>
+                
+                <a class="icon material-symbols-outlined" href="/dashboard/tasks/">assignment</a>
+                <a class="emptyspace"></a>
+                <a class="icon material-symbols-outlined" href="/login/">manage_accounts</a>
+                <a class="icon material-symbols-outlined" href="/login/">exit_to_app</a>
+                <a class="icon" style="height:15px"></a>
             </div>
         </div>
     </div>
