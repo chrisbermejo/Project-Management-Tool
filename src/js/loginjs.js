@@ -23,7 +23,7 @@ passwordInput.addEventListener('input', () => {
     }
 });
 
-const loginForm = document.querySelector('.login-form');
+const loginForm = document.getElementById('joe');
 const errorLabel = document.querySelector('.error');
 
 loginForm.addEventListener('submit', async (event) => {
