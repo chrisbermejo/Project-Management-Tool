@@ -14,93 +14,43 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <div class="dashboard">
-        <div class="dashboard-container">
+    <div class="main-container">
+        <div class="nav">
             <div class="icon-container">
-                <a class="emptyspace"></a>
-                <a  id="active" class="icon material-symbols-outlined" ref="/dashboard/">dashboard</a>
-                
-                <a class="icon material-symbols-outlined" href="/dashboard/members/">person</a>
-                
-                <a class="icon material-symbols-outlined" href="/dashboard/projects/">groups</a>
-                
-                <a class="icon material-symbols-outlined" href="/dashboard/tasks/">assignment</a>
-                <a class="emptyspace"></a>
-                <a class="icon material-symbols-outlined" href="/login/">manage_accounts</a>
-                <a class="icon material-symbols-outlined" href="/login/">exit_to_app</a>
-                <a class="icon" style="height:15px"></a>
+                <a class="icon" id="active">
+                    <h3 class="material-symbols-outlined">all_inclusive</h3>
+                    <h3>My App</h3>
+                </a>
             </div>
-            <div class="main-screen">
-                <div class="main-screen-header">
-                    <h2>Welcome Back, Chris!</h2    >
-                    <h5>Let's do the best today</h5>
-                </div>
-                <div class="main-screen-summary">
-                    <div class="main-screen-summary-header">
-                        <h4>Project Summary</h4>
-                        <div class="empty"></div>
-                    </div>
-                    <div class="project-summary-card-container">
-                        <div class="project-summary-card color1">
-                            <div class="cardText1">1</div>
-                            <div class="cardText2">Proposed</div>
-                            <div class="cardText3">Project</div>
-                        </div>
-                        <div class="project-summary-card color2">
-                            <div class="cardText1">5    </div>
-                            <div class="cardText2">Upcoming</div>
-                            <div class="cardText3">Project</div>
-                        </div>
-                        <div class="project-summary-card color3">
-                            <div class="cardText1">30</div>
-                            <div class="cardText2">Completed</div>
-                            <div class="cardText3">Project</div>
-                        </div>
-                    </div>
-                    <div class="main-screen-summary-header">
-                        <h4>My Tasks</h4>
-                        <div class="empty"></div>
-                    </div>
-                    <div class="main-screen-task-container">
-                        <button id="task_active" type="button">Active</button>
-                        <button type="button">Completed</button>
-                        <a class="empty"></a>
-                        <button type="button">View More</button>
-                    </div>
-                     
-                    <div class="task-card-container">
-                        <div class="task-card">
-                            <img src="/img/pfp_placeholder.png">
-                            <div class="task-card-text">
-                                <div>Name Project</div>
-                                <div>Leader: CHRISTOPHER BERMEJO </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task-card-container">
-                        <div class="task-card">
-                            <img src="/img/pfp_placeholder.png">
-                            <div class="task-card-text">
-                                <div>Name Project</div>
-                                <div>Leader: Christopher Bermejo </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="empty"></div>
             <div class="icon-container">
-                <a class="emptyspace"></a>
-                <a  id="active" class="icon material-symbols-outlined" ref="/dashboard/">dashboard</a>
-                
-                <a class="icon material-symbols-outlined" href="/dashboard/members/">person</a>
-                
-                <a class="icon material-symbols-outlined" href="/dashboard/projects/">groups</a>
-                
-                <a class="icon material-symbols-outlined" href="/dashboard/tasks/">assignment</a>
-                <a class="emptyspace"></a>
-                <a class="icon material-symbols-outlined" href="/login/">manage_accounts</a>
-                <a class="icon material-symbols-outlined" href="/login/">exit_to_app</a>
-                <a class="icon" style="height:15px"></a>
+                <a href="/dashboard/" id="active" class="icon">
+                    <div class="material-symbols-outlined" >dashboard</div>
+                    <div>DashBoard</div>
+                </a>
+                <a href="/dashboard/members/" class="icon">
+                    <div class="material-symbols-outlined" >person</div>
+                    <div>Members</div>
+                </a>
+                <a href="/dashboard/projects/" class="icon">
+                    <div class="material-symbols-outlined" >groups</div>
+                    <div>Projects</div>
+                </a>
+                <a href="/dashboard/tasks/" class="icon">
+                    <div class="material-symbols-outlined" >assignment</div>
+                    <div>Tasks</div>
+                </a>       
+            </div>
+            <div class="empty"></div>
+            <div class="icon-container">
+                <a href="/login/" class="icon">
+                    <div class="material-symbols-outlined" >manage_accounts</div>
+                    <div>Setting</div>
+                </a>
+                <a href="/login/" class="icon">
+                    <div class="material-symbols-outlined" >exit_to_app</div>
+                    <div>Sign Out</div>
+                </a>  
             </div>
         </div>
     </div>
