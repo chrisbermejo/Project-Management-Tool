@@ -85,57 +85,57 @@
         </div>
 
         <dialog id="memberForm">
-            <form onsubmit="validateForm(event)" action="/dashboard/members/member/add" id="member-form" method="POST">
-                <div>
-                    <label for="memberid" id="memberid-error">Member ID:</label>
-                    <input type="number" name="memberid" id="memberid" min="1" value="<%= members.length > 0 && members[members.length - 1].memberid != null ? members[members.length - 1].memberid + 1 : 1 %>">
-                </div>
+                <form onsubmit="validateForm(event)" action="/dashboard/members/member/add" id="member-form" method="POST">
+                    <div>
+                        <label for="memberid" id="memberid-error">Member ID:</label>
+                        <input type="number" name="memberid" id="memberid" min="1" value="<%= members.length > 0 && members[members.length - 1].memberid != null ? members[members.length - 1].memberid + 1 : 1 %>">
+                    </div>
 
-                <div>
-                    <label for="fname" id="fname-error">First Name:   </label>
-                    <input type="text" name="fname" id="fname" autofocus>
-                </div>
+                    <div>
+                        <label for="fname" id="fname-error">First Name:   </label>
+                        <input type="text" name="fname" id="fname" autofocus>
+                    </div>
 
-                <div>
-                    <label for="lname" id="lname-error">Last Name:   </label>
-                    <input type="text" name="lname" id="lname">
-                </div>
+                    <div>
+                        <label for="lname" id="lname-error">Last Name:   </label>
+                        <input type="text" name="lname" id="lname">
+                    </div>
 
-                <div>
-                    <label for="email" id="email-error">Email:   </label>
-                    <input type="email" name="email" id="email">
-                </div>
+                    <div>
+                        <label for="email" id="email-error">Email:   </label>
+                        <input type="email" name="email" id="email">
+                    </div>
 
-                <div>
-                    <label for="role" id="role-error">Role:</label>
-                    <select name="role" id="role">
-                        <option value="">-- Select Role --</option>
-                        <option value="admin">Admin</option>
-                        <option value="member">Member</option>
-                        <option value="guest">Guest</option>
-                    </select>
-                </div>
+                    <div>
+                        <label for="role" id="role-error">Role:</label>
+                        <select name="role" id="role">
+                            <option value="">-- Select Role --</option>
+                            <option value="admin">Admin</option>
+                            <option value="member">Member</option>
+                            <option value="guest">Guest</option>
+                        </select>
+                    </div>
 
-                <div>
-                    <label for="isActive" id="isActive-error">Is Active:</label>
-                    <select name="isActive" id="isActive">
-                        <option value="">-- Select Active Status --</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </div>
+                    <div>
+                        <label for="isActive" id="isActive-error">Is Active:</label>
+                        <select name="isActive" id="isActive">
+                            <option value="">-- Select Active Status --</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
 
-                <div>
-                    <label for="teamid" id="teamid-error">Team ID:</label>
-                    <input type="number" name="teamid" id="teamid" min="1">
-                </div>
-                
-                <div class="button-container">
-                    <button id="submit-button" type="submit">CREATE</button>
-                    <button id="close" type="button">CANCEL</button>
-                </div>
+                    <div>
+                        <label for="teamid" id="teamid-error">Team ID:</label>
+                        <input type="number" name="teamid" id="teamid" min="1">
+                    </div>
+                    
+                    <div class="button-container">
+                        <button id="submit-button" type="submit">CREATE</button>
+                        <button id="close" type="button">CANCEL</button>
+                    </div>
 
-            </form>
+                </form>
         </dialog>
 
         <dialog id="deleteForm">

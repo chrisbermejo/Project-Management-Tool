@@ -130,11 +130,11 @@ dialog {
     border-radius: 30px;
     color: black;
     background-color: hsla(0, 100%, 100%, 0.08);
-    width: 380px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 25rem;
 }
 
 .middle{
@@ -171,6 +171,9 @@ form .button-container button{
 form div input, form div select{
     padding: 5px;
     font-size: 1em;
+    border: none;
+    border-bottom:solid black 1px;
+    border-radius: 10px;
 }
 
 form div label, form .button-container button{
