@@ -8,58 +8,33 @@ html, body{
     height: 100%;
 }
 
-.icon-container a, .icon-container a:link, .icon-container a:visited .icon-container a:hover, .icon-container a:active {
+a, a:hover, a:visited, a:focus, a:active{
     color: black;
     text-decoration: none;
 }
 
-.nav{
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(0 81 255);
-}
-
 .main-container{
-    display: grid; 
-    grid-template-columns: auto 1fr;
-    grid-template-areas: 
-    "nav main-member-table-container"; 
-    height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-.icon-container{
+.icon-container, .logo-container{
+    justify-content: center;
     display: flex;
-    flex-direction: column;
-    padding: 1em;
-    gap: 2em;
+    gap: 10px;
+    padding-bottom: 10px;
 }
 
-.icon-container a{
-    background-color: rgb(0 81 255);
-    color: white;
-    display: flex;
+.icon-container a, .logo-container a{
     align-items: center;
-    gap:1em;
-    padding: .56em 1.6em;
-    border-radius: 5px;
+    display: flex;
+    gap: 5px;
 }
 
-.icon-container a:hover, #active{
-    background-color: rgb(255, 255, 255);
-    color: black;
-    box-shadow: 0px 3px 6px -5px rgb(0 0 0 / 25%);
+.logo-container{
+    padding: 10px 0px;
 }
 
-.icon a{
-    font-size: 1.2rem;
+#active{
+    background-color: blue;
 }
-
-.icon a{
-    font-size: 4rem;
-}
-
-.empty{
-    flex-grow: 1;
-    min-height: 30px;
-}
-
