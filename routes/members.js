@@ -8,8 +8,6 @@ router.get('/', async (req, res) => {
   try {
     const data = await member.find({});
     res.render('members/index-member', { members: data });
-    console.log(data)
-    console.log(data.length);
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
