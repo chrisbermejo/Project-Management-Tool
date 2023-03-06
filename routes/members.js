@@ -4,12 +4,13 @@ const member = require('../database/schemas/membersdb');
 
 router.use(express.static('src'));
 
-router.get('/', (req, res) => {
-  try{
-    member.find({}, (err, data) => {
-      res.render('members/index-member', { members: data });
-    });
-  }catch(err){
+router.get('/', async (req, res) => {
+  try {
+    const data = await member.find({});
+    res.render('members/index-member', { members: data });
+    console.log(data)
+    console.log(data.length);
+  } catch (err) {
     console.log(err);
     res.status(500).send(err);
   }
@@ -63,6 +64,7 @@ router.get('/member/:memberID/view', async (req, res) => {
 router.post('/member/add', async (req, res) => {
   try{
     const { memberid, fname, lname, email, role, isActive, teamid } = req.body;
+    console.log(req.body)
     const newMember = await member.create({memberid, fname, lname, email, role, isActive, teamid});
     newMember.save();
     console.log('Member Saved!');  

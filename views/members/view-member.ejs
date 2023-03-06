@@ -12,13 +12,12 @@
         <div class="member-info-container">
             <img src="/img/pfp_placeholder.png">
             <div class="member-text-container">
-                <div><%= member.memberid %></div>
-                <div>FIRST NAME: <%= member.fname %></div>
-                <div><%= member.lname %></div>
-                <div><%= member.email %></div>
-                <div><%= member.role %></div>
-                <div><%= member.isActive %></div>
-                <div><%= member.teamid %></div>
+                <div>ID: <%= member.memberid %></div>
+                <div>Team ID: <%= member.teamid %></div>
+                <div>Name: <%= member.fname %> <%= member.lname %></div>
+                <div>Email: <%= member.email %></div>
+                <div>Role: <%= member.role %></div>
+                <div>Status: <%= member.isActive == "yes" ? 'Active' : 'InActive' %></div>
             </div>
         </div>
     </div>

@@ -5,6 +5,9 @@
 
 .member-text-container{
     width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .member-info-container img{
