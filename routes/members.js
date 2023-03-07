@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 router.delete('/member/:member_ID/delete', async (req, res) => {
   try{
     const member_ID = req.params.member_ID;
-    await member.deleteOne({_id: member_ID});
+    await member.deleteOne({memberid: member_ID});
     console.log('Member Deleted!');  
     res.redirect('/dashboard/members');
   }catch(err){
@@ -29,7 +29,7 @@ router.delete('/member/:member_ID/delete', async (req, res) => {
 router.get('/member/:memberID/get', async (req, res) => {
   try {
     const memberID = req.params.memberID;
-    const memberINFO = await member.findOne({_id: memberID}, "memberid fname lname email role isActive teamid");
+    const memberINFO = await member.findOne({memberid: memberID}, "memberid fname lname email role isActive teamid");
     res.json(memberINFO);
   } catch (err) {
     console.error(err);
@@ -40,7 +40,7 @@ router.get('/member/:memberID/get', async (req, res) => {
 router.get('/member/:memberID/get/id', async (req, res) => {
   try {
     const memberID = req.params.memberID;
-    const memberINFO = await member.findOne({_id: memberID}, "memberid");
+    const memberINFO = await member.findOne({memberid: memberID}, "memberid");
     res.json(memberINFO);
   } catch (err) {
     console.error(err);
@@ -51,7 +51,7 @@ router.get('/member/:memberID/get/id', async (req, res) => {
 router.get('/member/:memberID/view', async (req, res) => {
   try {
     const memberID = req.params.memberID;
-    const memberINFO = await member.findOne({_id: memberID}, "memberid fname lname email role isActive teamid");
+    const memberINFO = await member.findOne({memberid: memberID}, "memberid fname lname email role isActive teamid");
     res.render('members/view-member', {member: memberINFO});
   } catch (err) {
     console.error(err);
@@ -77,7 +77,8 @@ router.put('/member/:member_ID/edit/update', async (req, res) => {
   try{
     const member_ID = req.params.member_ID;
     const { memberid, fname, lname, email, role, isActive, teamid } = req.body;
-    await member.updateOne({_id: member_ID}, {memberid, fname, lname, email, role, isActive, teamid});
+    console.log(req.body)
+    await member.updateOne({memberid: member_ID}, {memberid, fname, lname, email, role, isActive, teamid});
     console.log('Member Updated!');  
     res.redirect('/dashboard/members');
   }catch(err){

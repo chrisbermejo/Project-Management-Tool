@@ -50,17 +50,17 @@ body{
     color: white;
 }
 
-.main-content{
+.main-member-content{
     display: flex;
     flex-direction: column;
 }
 
-.main-content header{
+.main-member-content header{
     display: flex;
     padding-bottom: 10px;
 }
 
-.main-content header .add-button-container{
+.main-member-content header .add-button-container{
     display: flex;
     flex-grow: 1;
     justify-content: flex-end;
@@ -70,7 +70,7 @@ header .add-button-container{
     display: flex;
 }
 
-.members-table-container{
+.members-table-container, .projects-table-container{
     display: flex;
     justify-content: center;
 }
@@ -81,7 +81,7 @@ header .add-button-container{
     text-align: center;
 }
 
-.members-table div{
+.members-table div, .projects-table div{
     padding: 5px 10px;
 }
 
@@ -89,14 +89,14 @@ header .add-button-container{
     font-weight: bold;
 }
 
-.members-table .cell, .members-table .header{
+.members-table .cell, .members-table .header, .projects-table .cell, .projects-table .header{
     border-bottom: solid black 1px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.members-table .button-container{
+.members-table .button-container, .projects-table .button-container{
     display: flex;
     gap: 10px;
 }
@@ -141,7 +141,7 @@ dialog {
     display: flex;
 }
 
-#memberForm form, #deleteForm form{
+#memberForm form, #delete-memberForm form, #projectForm form{
     display: flex;
     flex-direction: column;
     padding: 40px 30px;
@@ -173,9 +173,26 @@ form div input, form div select{
     font-size: 1em;
     border: none;
     border-bottom:solid black 1px;
-    border-radius: 10px;
 }
 
 form div label, form .button-container button{
     font-size: 1.2em;
+}
+
+form div .input-error{
+    border-bottom: solid 1px red !important;
+}
+
+form div .label-error{
+    color: red;
+}
+
+.projects-table{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    text-align: center;
+}
+
+#project-form div textarea{
+    resize: none;
 }
