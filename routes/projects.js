@@ -53,14 +53,13 @@ router.post('/project/add', async (req, res) => {
 
 router.put('/project/:projectid/edit/update', async (req, res) => {
   try{
-    const project_id = req.params.projectid;
+    const project_id = await projects.findOne({ projectid: req.params.projectid },{ _id: 1 });
     const {projectid, title, description, status, projectedDate} = req.body;
-
-    const oldProject = await projects.findOne({projectid: project_id});
-    
-    await projects.updateOne({projectid: project_id}, {projectid, title, description, status, projectedDate});
+    const oldProject = await projects.findOne({_id: project_id._id});
+    await projects.updateOne({_id: project_id._id}, {projectid, title, description, status, projectedDate});
 
     const updatedFields = {};
+
     if (Number(projectid) !== oldProject.projectid){
       updatedFields.old_projectid = oldProject.projectid;
       updatedFields.new_projectid = projectid;
@@ -83,7 +82,8 @@ router.put('/project/:projectid/edit/update', async (req, res) => {
     }
 
     const auditLogEntry = new AuditLog({
-      project_new_title: title,
+      type: 'Project',
+      type_id: project_id._id,
       updated_by: 'chris',
       updated_fields: updatedFields
     });
