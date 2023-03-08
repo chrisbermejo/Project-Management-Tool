@@ -15,14 +15,16 @@ router.get('/', (req, res) => {
     res.status(500).send(err);
   }
 });
-router.get('/', (req, res) => {
+
+router.delete('/project/:projectid/delete', async (req, res) => {
   try{
-    projects.find({}, (err, data) => {
-      res.render('projects/main-projects', { projects: data });
-    });
+    const projectID = req.params.projectid;
+    await projects.deleteOne({projectid: projectID});
+    console.log('Project Deleted!');  
+    res.redirect('/dashboard/projects');
   }catch(err){
-    console.log(err);
-    res.status(500).send(err);
+    console.error(err);
+    res.sendStatus(500);
   }
 });
 
