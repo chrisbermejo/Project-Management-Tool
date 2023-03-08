@@ -5,7 +5,8 @@ const auditLogSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  collection_name: String,
+  type: String,
+  type_id: String,
   updated_by: String,
   updated_fields: Object
 });
