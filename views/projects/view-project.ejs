@@ -9,18 +9,25 @@
     <title></title>
 </head>
 <body>
-    <div class="member-info">
-        <div class="member-info-container">
-            <img src="/img/pfp_placeholder.png">
-            <div class="member-text-container">
-                <div>Project ID: <%= project.projectid%> </div>
-                <div>Title: <%= project.title%> </div>
-                <div>Description: <br> <%= project.description%> </div>
-                <div>Status: <%= project.status%> </div>
-                <div>Projected Date: <%= project.projectedDate%> </div>
+    <div class="view">
+        <div class="view-container">
+            <div class="member-info-container">
+                <img src="/img/pfp_placeholder.png">
+                <div class="member-text-container">
+                    <div>Project ID: <%= project.projectid%> </div>
+                    <div>Title: <%= project.title%> </div>
+                    <div>Description: <br> <%= project.description%> </div>
+                    <div>Status: <%= project.status%> </div>
+                    <div>Projected Date: <%= project.projectedDate%> </div>
+                </div>
             </div>
+            <div>Recent Changes: </div>
+            <div id="id"></div>
         </div>
     </div>
     
 </body> 
+
+<script src="/js/view-projectjs.js"></script>
+
 </html>
