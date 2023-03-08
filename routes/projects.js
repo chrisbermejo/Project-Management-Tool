@@ -53,6 +53,17 @@ router.post('/project/add', async (req, res) => {
   }
 });
 
+router.get('/project/:projectid/view', async (req, res) => {
+  try {
+    const projectID = req.params.projectid;
+    const projectINFO = await projects.findOne({projectid: projectID});
+    res.render('projects/view-project', {project: projectINFO});
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
+
 router.put('/project/:projectid/edit/update', async (req, res) => {
   try{
     const project_id = await projects.findOne({ projectid: req.params.projectid },{ _id: 1 });

@@ -104,6 +104,7 @@ editButtons.forEach(editButton => {
     try {
       const response = await fetch(`/dashboard/projects/project/${projectID}/get`);
       const project = await response.json();
+      console.log(project.projectid)
       projectform.action = `/dashboard/projects/project/${project.projectid}/edit/update?_method=PUT`;
       projectid.value = project.projectid;
       title.value = project.title;

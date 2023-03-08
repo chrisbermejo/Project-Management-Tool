@@ -141,7 +141,7 @@ dialog {
     display: flex;
 }
 
-#memberForm form, #delete-memberForm form, #projectForm form{
+#memberForm form, #delete-memberForm form, #projectForm form, #delete-projectForm form{
     display: flex;
     flex-direction: column;
     padding: 40px 30px;

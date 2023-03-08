@@ -70,7 +70,7 @@
                         <div class="cell h2"><%= project.status %></div>
                         <div class="cell h2"><%= project.projectedDate%></div>
                         <div class="cell button-container">
-                            <button class="viewMemberInfo" >View</button>
+                            <button class="viewMemberInfo" onclick="location.href='/dashboard/projects/project/<%= project.projectid %>/view';">View</button>
                             <button class="openEditProjectButton" value="<%= project.projectid %>">Edit</button>
                             <button class="openDeleteForm" value="<%= project.projectid %>">Delete</button>
                         </div>
