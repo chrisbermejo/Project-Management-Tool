@@ -33,3 +33,15 @@ html, *{
     flex-direction: column;
     gap: 10px;
 }
+
+#recent-changes{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#recent-changes #change-one, #recent-changes #change-two, #recent-changes #change-three{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}

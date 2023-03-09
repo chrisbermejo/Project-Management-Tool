@@ -86,18 +86,7 @@ router.put('/project/:projectid/edit/update', async (req, res) => {
     const oldProject = await projects.findOne({_id: project_id._id});
     await projects.updateOne({_id: project_id._id}, {projectid, title, description, status, projectedDate});
 
-    const updatedFields = {
-      old_projectid: '',
-      new_projectid: '',
-      old_title: '',
-      new_title: '',
-      old_description: '',
-      new_description: '',
-      old_status: '',
-      new_status: '',
-      old_projectedDate: '',
-      new_projectedDate: '',
-    };
+    const updatedFields = {};
 
     if (Number(projectid) !== oldProject.projectid){
       updatedFields.old_projectid = oldProject.projectid;
