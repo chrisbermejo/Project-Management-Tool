@@ -6,32 +6,32 @@ const member = require('../database/schemas/membersdb');
 router.use(express.static('src'));
 
 
-//USING JOKER API - CREATE
-router.post('/member/bots/add', async (req, res) => {
-  try{
-    let joe = 30;
-    while(joe <= 60){
-      console.log(faker.name.firstName())
-      let joe2 = {
-        memberid: joe,
-        fname: faker.name.firstName(),
-        lname: faker.name.lastName(),
-        email: faker.internet.email(),
-        role: 'member',
-        isActive: 'yes',
-        teamid: faker.datatype.number({ min: 1, max: 20}) 
-      };
-      let newMember = await member.create(joe2);
-      newMember.save();
-      console.log('Member Saved!');
-      joe++
-    }
-    res.redirect('/dashboard/members');
-  }catch (err) {
-    console.error(err);
-    res.sendStatus(500);
-  }
-});
+// //USING JOKER API - CREATE
+// router.post('/member/bots/add', async (req, res) => {
+//   try{
+//     let joe = 30;
+//     while(joe <= 60){
+//       console.log(faker.name.firstName())
+//       let joe2 = {
+//         memberid: joe,
+//         fname: faker.name.firstName(),
+//         lname: faker.name.lastName(),
+//         email: faker.internet.email(),
+//         role: 'member',
+//         isActive: 'yes',
+//         teamid: faker.datatype.number({ min: 1, max: 20}) 
+//       };
+//       let newMember = await member.create(joe2);
+//       newMember.save();
+//       console.log('Member Saved!');
+//       joe++
+//     }
+//     res.redirect('/dashboard/members');
+//   }catch (err) {
+//     console.error(err);
+//     res.sendStatus(500);
+//   }
+// });
 
 
 router.get('/', async (req, res) => {
@@ -81,7 +81,7 @@ router.get('/member/:memberID/get/id', async (req, res) => {
 router.get('/member/:memberID/view', async (req, res) => {
   try {
     const memberID = req.params.memberID;
-    const memberINFO = await member.findOne({memberid: memberID}, "memberid fname lname email role isActive teamid");
+    const memberINFO = await member.findOne({memberid: memberID}, "memberid fname lname email role isActive teamid createdAt");
     res.render('members/view-member', {member: memberINFO});
   } catch (err) {
     console.error(err);
