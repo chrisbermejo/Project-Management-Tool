@@ -1,5 +1,5 @@
 const express = require('express');
-const { faker } = require('@faker-js/faker')
+// const { faker } = require('@faker-js/faker')
 const router = express.Router();
 const member = require('../database/schemas/membersdb');
 
