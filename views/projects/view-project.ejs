@@ -10,22 +10,24 @@
 </head>
 <body>
     <div class="view">
-        <div class="view-container">
-            <div class="member-info-container">
-                <img src="/img/pfp_placeholder.png">
-                <div class="member-text-container">
-                    <div>Project ID: <%= project.projectid%> </div>
-                    <div>Title: <%= project.title%> </div>
-                    <div>Description: <br> <%= project.description%> </div>
-                    <div>Status: <%= project.status%> </div>
-                    <div>Projected Date: <%= project.projectedDate%> </div>
+        <div>
+            <div class="view-container">
+                <div class="member-info-container">
+                    <img src="/img/pfp_placeholder.png">
+                    <div class="member-text-container">
+                        <div>Project ID: <%= project.projectid%> </div>
+                        <div>Title: <%= project.title%> </div>
+                        <div>Description: <br> <%= project.description%> </div>
+                        <div>Status: <%= project.status%> </div>
+                        <div>Projected Date: <%= project.projectedDate%> </div>
+                    </div>
                 </div>
             </div>
-            <div>Recent Changes: </div>
-            <div id="recent-changes">
-                <div id="change-one"></div>
-                <div id="change-two"></div>
-                <div id="change-three"></div>
+        </div>
+        <div id="change-header" style="text-align: center;padding:1rem 0rem;"></div>
+        <div class="auditlog-container">
+            <div>
+                <div id="recent-changes"></div>
             </div>
         </div>
     </div>

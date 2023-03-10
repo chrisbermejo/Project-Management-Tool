@@ -30,7 +30,9 @@ loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const data = {};
     new FormData( loginForm ).forEach((value, key) => data[key] = value);
+    console.log('1')
     console.log(data)
+    console.log('1')
     try {
     const response = await fetch('/login/signin', {
         method: 'POST',
