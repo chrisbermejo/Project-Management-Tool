@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/view-member.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title></title>
+</head>
+<body>
+    <div class="view">
+        <div>
+            <div class="view-container">
+                <div class="member-info-container">
+                    <img src="/img/pfp_placeholder.png">
+                    <div class="member-text-container">
+                        <div>Project ID: <%= project.projectid%> </div>
+                        <div>Title: <%= project.title%> </div>
+                        <div>Description: <br> <%= project.description%> </div>
+                        <div>Status: <%= project.status%> </div>
+                        <div>Projected Date: <%= project.projectedDate%> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="change-header" style="text-align: center;padding:1rem 0rem;"></div>
+        <div class="auditlog-container">
+            <div>
+                <div id="recent-changes"></div>
+            </div>
+        </div>
+    </div>
+    
+</body> 
+
+<script src="/js/view-projectjs.js"></script>
+
+</html>

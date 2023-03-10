@@ -7,25 +7,136 @@
     <link rel="stylesheet" href="/css/main.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
     <title>Projects</title>
 </head>
 <body>
-    <div class="main-member-container">
-        <div class="main-member-nav-container">
-            <div class="main-member-nav">
-                <a id="first-button" href="/dashboard/">Dashboard</a>
-                <a href="/dashboard/members/">Members</a>
-                <a id="active" href="/dashboard/projects/">Projects</a>
-                <a href="/dashboard/tasks/">Tasks</a>
-                <div class="left-button-container">
-                    <a id="last-button" href="/login/">Logout</a>
+    <div class="container">
+        <div class="nav">
+            <div class="logo-container">
+                <a class="icon">
+                    <h3 class="material-symbols-outlined">all_inclusive</h3>
+                    <h3>My App</h3>
+                </a>
+            </div>
+            <div class="icon-container">
+                <a href="/dashboard/" class="icon">
+                    <div class="material-symbols-outlined" >dashboard</div>
+                    <div>DashBoard</div>
+                </a>
+                <a href="/dashboard/members/" class="icon">
+                    <div class="material-symbols-outlined" >person</div>
+                    <div>Members</div>
+                </a>
+                <a href="/dashboard/projects/" id="active" class="icon">
+                    <div class="material-symbols-outlined" >groups</div>
+                    <div>Projects</div>
+                </a>
+                <a href="/dashboard/tasks/" class="icon">
+                    <div class="material-symbols-outlined" >assignment</div>
+                    <div>Tasks</div>
+                </a>       
+                <a href="/login/" class="icon">
+                    <div class="material-symbols-outlined" >manage_accounts</div>
+                    <div>Setting</div>
+                </a>
+                <a href="/login/" class="icon">
+                    <div class="material-symbols-outlined" >exit_to_app</div>
+                    <div>Sign Out</div>
+                </a>  
+            </div>
+        </div>
+        <div class="main-member-content">
+            <header>
+                    <h1>Projects</h1>
+                    <div class="add-button-container">
+                        <button id="addProjectButton" class="circle-container material-symbols-outlined" type="button">
+                            person_add
+                        </button>
+                    </div>
+            </header>
+            <div class="projects-table-container">
+                <div class="projects-table">
+                <% if(projects.length === 0){ %>
+                    <div class="empty-member-db">There are currently no projects in the database.</div>
+                <% } else { %>
+                    <div class="header">ID</div>
+                    <div class="header">Title</div>
+                    <div class="header h2">Status</div>
+                    <div class="header h2">Projected Date</div>
+                    <div class="header"> </div>
+                    <% projects.forEach(project => { %>
+                        <div class="cell"><%= project.projectid %></div>
+                        <div class="cell"><%= project.title %></div>
+                        <div class="cell h2"><%= project.status %></div>
+                        <div class="cell h2"><%= project.projectedDate%></div>
+                        <div class="cell button-container">
+                            <button class="viewMemberInfo" onclick="location.href='/dashboard/projects/project/<%= project.projectid %>/view';">View</button>
+                            <button class="openEditProjectButton" value="<%= project.projectid %>">Edit</button>
+                            <button class="openDeleteForm" value="<%= project.projectid %>">Delete</button>
+                        </div>
+                    <% }); %>
+                <% } %>                    
                 </div>
             </div>
         </div>
+
+        <dialog id="projectForm">
+                <form onsubmit="validateForm(event)" action="/dashboard/projects/project/add" id="project-form" method="POST">
+                    <div>
+                        <label for="projectid" id="projectid-error">Project ID:</label>
+                        <input type="number" name="projectid" id="projectid" min="1" value="<%= projects.length > 0 && projects[projects.length - 1].projectid != null ? projects[projects.length - 1].projectid + 1 : 1 %>">
+                    </div>
+
+                    <div>
+                        <label for="title" id="title-error">Title:</label>
+                        <input type="text" name="title" id="title" autofocus>
+                    </div>
+
+                    <div>
+                        <label for="description" id="description-error">Description:</label>
+                        <textarea rows="10" name="description" id="description" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero cumque sed nemo, provident aut repellat repudiandae quod natus ut eligendi qui tempore eaque tenetur quisquam autem vel expedita dolore eum.</textarea>
+                    </div>
+
+                    <div>
+                        <label for="status" id="status-error">Role:</label>
+                        <select name="status" id="status">
+                            <option value="">-- Select Status --</option>
+                            <option value="Planning">Planning</option>
+                            <option value="Design">Design</option>
+                            <option value="Development">Development</option>
+                            <option value="Testing">Testing</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="projectedDate" id="projectedDate-error">Team ID:</label>
+                        <input type="date" name="projectedDate" id="projectedDate">
+                    </div>
+                    
+                    <div class="button-container">
+                        <button id="submit-button" type="submit">CREATE</button>
+                        <button id="close" type="button">CANCEL</button>
+                    </div>
+
+                </form>
+        </dialog>
+
+        <dialog id="delete-projectForm">
+            <form method="POST" action="" id="delete-form">
+                <div  style="padding-top: 0px" class="button-container">
+                    <button id="delete-submit" type="submit">DELETE</button>
+                    <button id="delete-close" type="button">CANCEL</button>
+                </div>
+            </form>
+        </dialog>
+
+    </div>
+</div>
+
     </div>
 </body>
+
+<script src="js/projectjs.js"></script>
+
 </html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/login.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Login</title>
@@ -14,29 +14,33 @@
 <body>
     <div>
         <div class="login">
-            <form class="login-form" action="/login/signin" method="POST">
-                <h1>Login</h1>
+            <div class="login-container">
+                <form class="login-form" id="joe">
+                    <h1>Login</h1>
+                    
+                    <label class="error">Incorrect information</label>
 
-                <div class="memberid-container">
-                    <input type="text" placeholder="Member ID" id="memberid" name="memberid">
-                    <i class="material-symbols-outlined">badge</i>
-                </div>
-                
-                <div class="email-container">
-                    <input type="email" placeholder="Email" class="input-with-email-logo" name="email">
-                    <i class="material-symbols-outlined">email</i>
-                </div>
-
-                <div class="password-container">
-                    <input type="password" placeholder="Password" id="password" name="password">
-                    <i class="material-symbols-outlined" id="show-password">key</i>
-                </div>
-
-                <div class="signin-buttons">
-                    <button type="submit">Login</button>
-                    <button type="button">Sign Up</button>
-                </div>
-            </form>
+                    <div class="memberid-container">
+                        <input type="text" placeholder="Member ID" id="memberid" name="memberid">
+                        <i class="material-symbols-outlined">badge</i>
+                    </div>
+                    
+                    <div class="email-container">
+                        <input type="email" placeholder="Email" class="input-with-email-logo" name="email">
+                        <i class="material-symbols-outlined">email</i>
+                    </div>
+    
+                    <div class="password-container">
+                        <input type="password" placeholder="Password" id="password" name="password">
+                        <i class="material-symbols-outlined" id="show-password">key</i>
+                    </div>
+    
+                    <div class="signin-buttons">
+                        <button type="submit">Login</button>
+                        <button type="button">Sign Up</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </body>

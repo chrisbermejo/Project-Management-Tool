@@ -31,9 +31,9 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
     createdAt: {
-        type: mongoose.SchemaTypes.Date,
+        type: Date,
         required: true,
-        default: new Date(),
+        default: Date.now 
     },
     password: {
         type: mongoose.SchemaTypes.String,

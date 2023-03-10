@@ -1,7 +1,8 @@
 const session = require('express-session');
 
 const sessionConfig = {
-  secret: 'CHRISTOPHERBERMEJODB',
+  // secret: 'CHRISTOPHERBERMEJODB',
+  secret: 'serect-key',
   resave: false,
   saveUninitialized: true,
   cookie: { maxAge: 3600000 }

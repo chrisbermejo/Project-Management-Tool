@@ -1,20 +1,62 @@
+html, *{
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+body, html{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .member-info-container{
     display: flex;
     gap: 20px;
 }
 
 .member-text-container{
-    width: auto;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
 }
 
 .member-info-container img{
-    width: 200px;
-    height: 200px;
+    max-width: 14rem;
+    max-height: 14rem;
 }
 
-.member-info{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.view{
+    display: flex;
+    flex-direction: column;
+}
+
+.view-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#recent-changes{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    font-size: .8rem;
+    text-align: center;
+}
+
+#recent-changes > div{
+    border: solid black 2px;
+    padding: 10px;
+}
+
+.auditlog-container{
+    display: flex;
+    justify-content: center;
+}
+
+div p{
+    color: black;
 }

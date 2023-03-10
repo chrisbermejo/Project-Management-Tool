@@ -56,7 +56,7 @@ function validation() {
     isActive.classList.remove('input-error');
   }
 
-  if (teamid.value === "" || isNaN(teamid.value) || parseInt(teamid.value) < 1) {
+  if (teamid.value === "" || isNaN(teamid.value) || parseInt(teamid.value) < 0) {
     teamidError.classList.add('label-error');
     teamid.classList.add('input-error');
     isValid = false;
@@ -132,7 +132,7 @@ editButtons.forEach(editButton => {
     try {
       const response = await fetch(`/dashboard/members/member/${memberId}/get`);
       const member = await response.json();
-      memberform.action = `/dashboard/members/member/${member._id}/edit/update?_method=PUT`;
+      memberform.action = `/dashboard/members/member/${member.memberid}/edit/update?_method=PUT`;
       memberid.value = member.memberid;
       fname.value = member.fname;
       lname.value = member.lname;
@@ -165,7 +165,7 @@ closeDialog.addEventListener('click', function() {
   removeClasses();
 });
 
-let deleteDialog = document.getElementById('deleteForm');
+let deleteDialog = document.getElementById('delete-memberForm');
 let deleteButtons = document.querySelectorAll('.openDeleteForm');
 let deleteForm = document.getElementById('delete-form');
 let closeDelete = document.getElementById('delete-close');

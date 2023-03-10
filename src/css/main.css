@@ -1,391 +1,198 @@
 html, *{
     margin: 0px;
-    font-family:  Roboto,Arial,sans-serif;
     box-sizing: border-box;
+    font-family: Roboto, Arial, sans-serif;
 }
 
-input::-ms-reveal, input::-ms-clear {
-        display: none;
+html, body{
+    height: 100%;
 }
+
+a, a:hover, a:visited, a:focus, a:active{
+    color: black;
+    text-decoration: none;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-container, .logo-container{
+    display: flex;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.icon-container{
+    padding-bottom: 30px;
+}
+
+.icon-container a, .logo-container a{
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    padding: 5px 10px;
+}
+
+.logo-container{
+    padding: 10px 0px;
+}
+
+#active{
+    background-color: rgb(0, 0, 255);
+    color: white;
+}
+
+.main-member-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-member-content header{
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.main-member-content header .add-button-container{
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+header .add-button-container{
+    display: flex;
+}
+
+.members-table-container, .projects-table-container{
+    display: flex;
+    justify-content: center;
+}
+
+.members-table{
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    text-align: center;
+}
+
+.members-table div, .projects-table div{
+    padding: 5px 10px;
+}
+
+.members-table .header{
+    font-weight: bold;
+}
+
+.members-table .cell, .members-table .header, .projects-table .cell, .projects-table .header{
+    border-bottom: solid black 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.members-table .button-container, .projects-table .button-container{
+    display: flex;
+    gap: 10px;
+}
+
+@media screen and (max-width: 1100px) {
+    .members-table {
+        grid-template-columns: repeat(6, auto)
+    }
+
+    .members-table .h1{
+        display: none
+    }
+}
+
+.members-table .empty-member-db{
+    padding-top: 30px;
+}
+
+/* @media screen and (max-width: 800px) {
+    .members-table {
+        grid-template-columns: repeat(3, auto)
+    }
+
+    .h2{
+        display: none
+    }
+} */
 
 dialog {
     border: 0px;
     border-radius: 30px;
     color: black;
     background-color: hsla(0, 100%, 100%, 0.08);
-    width: 380px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 25rem;
 }
 
 .middle{
-    border-radius: 20px;
-    padding: 20px 30px;
+    display: flex;
+}
+
+#memberForm form, #delete-memberForm form, #projectForm form, #delete-projectForm form{
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    border-radius: 30px;
     background-color: white;
+    gap: 20px;
 }
 
-.middle hgroup{
-    text-align: center;
-    padding-bottom: 10px;
+form div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1em;
 }
 
-#member-form input[type='text'], #member-form input[type='email'],
-#member-form input[type='number'], #member-form input[type='password'], select{
-    box-sizing: border-box;
-    width:100%;
-    border-radius: 10px;
-    padding: 6px;
-}
-
-#member-form label{
+form .button-container{
     padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: left;
-    display: block;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
 }
 
-.button-container{
-    display:flex;
+form .button-container button{
     width: 100%;
-    gap: 15px;
-    padding-top: 20px;
 }
 
-.button-container button{
-    padding: 6px;
-    width: 50px;
-    flex-grow: 1;
-    border-radius: 10px;
+form div input, form div select{
+    padding: 5px;
+    font-size: 1em;
+    border: none;
+    border-bottom:solid black 1px;
 }
 
-.main-member-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+form div label, form .button-container button{
+    font-size: 1.2em;
 }
 
-
-.main-member-nav-container{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: white;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+form div .input-error{
+    border-bottom: solid 1px red !important;
 }
 
-.main-member-nav{
-    display:flex;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    gap: 10px;
-}
-
-.left-button-container{
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-end;
-}
-
-.main-member-nav-container a {
-    font-size: 13px;
-    border-radius: 5px;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 8px 16px;
-    text-decoration: none;
-}
-
-.main-member-nav-container a:hover {
-    color: black;
-    background-color: rgba(2, 2, 2, 0.4);
-}
-
-a,a:link,a:visited,a:hover,a:active{
-    color: black;
-    text-decoration: none;
-}
-
-#active {
-    color: white;
-    background-color: rgba(13, 88, 250, 0.733);
-}
-
-#active > a:hover {
-    color: white;
-    background-color: rgba(13, 88, 250, 0.733);
-}
-
-.main-member-div1 { 
-    padding-top:20px;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.main-member-header-container{
-    padding-bottom: 20px;
-}
-
-.main-member-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.circle-container{
-    height: 53px;
-    width: 53px;
-    border-radius: 100%;
-    float:right;
-    border: 0px;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
-}
-
-.table-grid-container{
-    display: grid;
-    grid-template-columns: repeat(7, auto);
-    text-align: center;
-}
-
-.header {
-    padding-bottom: 5px;
-    font-size: 20px;
-    padding-left:10px;
-    padding-right: 10px;
-    font-weight: bold;
-    border-bottom: 1px solid black;
-}
-
-.cell {
-    height: 36px;
-    padding-top: 5px;
-    padding-left:10px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid black;
-}
-
-h1{
-    font-size:48px;
-}
-
-.main-member-nav a:first-child {
-    margin-left:10px;
-}
-
-#last-button{
-    margin-right:10px;
-}
-
-.cell-text{
-    line-height: 23px;
-    height: 36px;
-}
-
-.button-cell button{
-    font-size:14px;
-    width: auto;
-    padding: 2px 10px 2px 10px;
-    vertical-align: middle;
-}
-
-.label-error{
+form div .label-error{
     color: red;
 }
 
-.input-error{
-    border: solid 1px red;
-}
-
-#delete-submit{
-    background-color: red;
-}
-
-button:hover{
-    background-color: rgba(13, 88, 250, 0.733);
-    color:white;
-}
-
-#delete-submit:hover{
-    background-color: rgb(210,0,0);
-    color:white;
-}
-
-@media screen and (max-width: 1100px) {
-    .table-grid-container {
-        grid-template-columns: repeat(3, auto)
-    }
-
-    .cell-res, .header-res{
-        display: none
-    }
-      
-
-}
-
-@media screen and (max-width: 500px) {
-    .table-grid-container {
-        grid-template-columns: repeat(2, auto)
-    }
-
-    .cell-res, .header-res, .cell-text-text{
-        display: none
-    }
-      
-
-  }
-
-.dashboard{
-    border: 0px;
-    border-radius: 30px;
-    color: black;
-    background-color: hsla(0, 100%, 100%, 0.08);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.icon-container{
-    display: flex;
-    gap: 20px;
-    /* border: solid 5px rgba(2, 2, 2, 0.4);
-    padding: 30px;  */
-    border-radius: 35px;
-    background-color: rgb(0,0,0,0.15);
-    padding: 40px;
-
-}
-
-.icon-container a{
-    height: 150px;
-    width: 150px;
-    padding: 30px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 35px;
-}
-
-.icon-container a:hover{
-    background-color: rgba(13, 88, 250, 0.733);
-    color: white;
-}
-
-.icon-container:last-child a:last-child:hover{
-    background-color: red;
-    color: white;
-}
-
-.icon-container a span{
-    font-size: 80px;
+.projects-table{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
     text-align: center;
 }
 
-.login{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 30px;
-}
-
-.dashboard-container{
-    display: flex;
-}
-
-.dashboard-container div.icon-container:last-child{
-    margin-left: 80px;
-}
-
-@media screen and (max-width: 1080px) {
-    .dashboard{
-        width: 230px;
-        top: 47%;
-    }
-    .dashboard-container{
-        transform: scale(60%);
-    }
-
-    .dashboard-container, .icon-container{
-        flex-direction: column;
-    }
-    .dashboard-container div.icon-container:last-child{
-        margin-top: 40px;
-        margin-left: 0px;
-    }
-}
-
-#addMemberButton{
-    text-align: center;
-}
-
-.login-form input[type='text'], .login-form input[type='password'], .login-form input[type='email']{
-    box-sizing: border-box;
-    width:100%;
-    border-radius: 10px;
-    padding: 6px;
-    padding-left: 10px;
-    font-size: 20px;
-    border: 0px;
-    border-bottom: solid 1px black;
-}
-
-.login-form input[type='text']:focus, input[type='password']:focus, input[type='email']:focus {
-    outline: none;
-}
-
-.login-form{
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    border-radius: 20px;
-    padding: 80px 20px;
-}
-
-.login-form button{
-    font-size: 20px;
-    width: 100px;
-}
-
-.signin-buttons{
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.password-container, .email-container, .memberid-container{
-    position: relative;
-}
-
-.password-container i, .email-container i, .memberid-container i{
-    position: absolute;
-    right: 4%;
-    top: 25%;
-    color: gray;
-    user-select: none;
-}
-
-.password-container i{
-    cursor: pointer;
-}
-
-.password-container i:hover{
-    color: black;
-}
-
-.password-container input, .email-container input, .memberid-container input{
-    padding-left: 12px;
-    border-radius: 10px;
-}
-
-.login-form h1{
-    text-align: center;
-    padding-bottom: 20px;
+#project-form div textarea{
+    resize: none;
 }
