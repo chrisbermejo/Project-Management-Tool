@@ -9,7 +9,7 @@
 <ul>
   <li>Dashboard Page: In Progress</li>
   <li>Member Page: Almost Complete (Audit log changes needed in member view page)</li>
-  <li>Project Page: Complete</li>
+  <li>Project Page: In Progress</li>
   <li>Task Page: Not Started</li>
   <li>Settings: Currently redirects user to login page</li>
   <li>Logout: Currently redirects user to login page</li>
