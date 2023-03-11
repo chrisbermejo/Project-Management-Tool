@@ -1,18 +1,6 @@
-# expressjs-database
+<h1 align="center">Project Management Tool</h1>
 
-This project is a first-time setup for building an Express.js application with MongoDB. 
+<p align="center">Built using HTML, CSS, JavaScript, Node.js, and Express.js.</p>
 
-## Project Status
-
-As of 2-16-2023, the project has successfully connected to MongoDB using Mongoose. Currently, a simple form UI is implemented, and I'm currently working on setting up the necessary routes. 
-
-## Planned Features
-
-### Future updates:
-
-- Login page
-- Cookies to keep user session active
-- Automatic re-login after a certain period of inactivity
-- Database page accessible after logging in
-- Similar formatting to a previously-built PHP project
+<p align="center">A web-based tool designed to help manage projects, tasks, and members. It allows users to create, view, and delete members, tasks, and projects, and features an audit log that saves any changes made and displays them on the relevant page. Data is stored using MongoDB.</p>
 
