@@ -7,6 +7,7 @@
 <h2 align="center">Status</h2>
 
 <ul>
+  <li>Login Page: Almost Complete</li>
   <li>Dashboard Page: In Progress</li>
   <li>Member Page: Almost Complete (Audit log changes needed in member view page)</li>
   <li>Project Page: In Progress</li>
