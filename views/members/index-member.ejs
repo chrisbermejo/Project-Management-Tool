@@ -75,8 +75,10 @@
                         <div class="cell h2"><%= member.teamid > 0 ? member.teamid : "" %></div>
                         <div class="cell button-container">
                             <button class="viewMemberInfo" onclick="location.href='/dashboard/members/member/<%=member.memberid%>/view';" >View</button>
-                            <button class="openEditMemberButton" value="<%=member.memberid %>">Edit</button>
-                            <button class="openDeleteForm" value="<%=member.memberid %>">Delete</button>
+                            <% if (user.role === 'admin') { %>
+                                <button class="openEditMemberButton" value="<%=member.memberid %>">Edit</button>
+                                <button class="openDeleteForm" value="<%=member.memberid %>">Delete</button>
+                              <% } %>
                         </div>
                     <% }); %>
                 <% } %>                    

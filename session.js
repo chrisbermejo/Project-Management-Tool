@@ -5,7 +5,7 @@ const sessionConfig = {
   secret: 'serect-key',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 3600000 }
+  cookie: { maxAge: 3600000, secure: false }
 };
 
 module.exports = function(app) {

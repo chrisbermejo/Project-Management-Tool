@@ -37,7 +37,7 @@ router.use(express.static('src'));
 router.get('/', async (req, res) => {
   try {
     const data = await member.find({});
-    res.render('members/index-member', { members: data });
+    res.render('members/index-member', { members: data, user: req.session.user});
   } catch (err) {
     console.log(err);
     res.status(500).send(err);

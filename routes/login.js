@@ -18,13 +18,14 @@ router.post('/signin', async (req, res) => {
     const foundMember = await user.findOne({memberid: req.body.memberid, email: req.body.email, password: req.body.password});
     console.log(foundMember)
     if (foundMember != 'null') {
-      const userName = await member.findOne({memberid: req.body.memberid, email: req.body.email}, "fname lname");
+      const userName = await member.findOne({memberid: req.body.memberid, email: req.body.email}, "fname lname role");
       req.session.user = {
         fname: userName.fname,
-        lname: userName.lname
+        lname: userName.lname,
+        role : userName.role
       };
       console.log(req.session.user);
-      res.redirect('/dashboard/');
+      res.redirect('/dashboard');
     } else {
       res.status(401);
       return;

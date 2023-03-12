@@ -8,7 +8,7 @@ router.use(express.static('src'));
 router.get('/', (req, res) => {
   try{
     projects.find({}, (err, data) => {
-      res.render('projects/main-projects', { projects: data });
+      res.render('projects/main-projects', { projects: data, user: req.session.user});
     });
   }catch(err){
     console.log(err);
